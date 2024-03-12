@@ -1,0 +1,275 @@
+/*//////////Plantilla//////////*/
+
+.fa-house {
+    margin-right: 6px;
+}
+
+.fa-arrow-right-to-bracket {
+    margin-right: 8px;
+}
+
+.fa-cart-shopping {
+    margin-right: 8px;
+}
+
+.form-inline {
+    width: 30%; /* Ancho del nav */
+}
+
+.header {
+    background-color: #007BFF;
+    padding: 0px 0; /* Espaciado del encabezado */
+}
+
+.navbar-brand {
+    font-size: 24px;
+}
+
+.navbar-nav .nav-item a {
+    font-size: 18px;
+}
+
+#footerPlantilla {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 0; /* Espaciado del pie de página */
+    margin-top: 30px;
+}
+
+/*//////////Panel Index//////////*/
+
+#tarjetas-section{
+    padding-top: 15px;
+}
+
+#main-header {
+    background-color: #fff;
+    color: #fff;
+    padding: 10px 0; /* Espaciado de la sección principal del encabezado */
+}
+
+#main-header h1 {
+    font-size: 27px;
+    color: #000;
+    margin-top: 15px; /* Margen superior del ttulo principal */
+}
+
+.card {
+    text-align: left; /* Alineación del texto en las tarjetas */
+    font-size: 18px; /* Tamaño de fuente en las tarjetas */
+}
+
+.card-container {
+    margin: 20px auto;
+}
+
+/*//////////Panel Usuario//////////*/
+
+.user-info {
+    position: relative;
+}
+
+#imgEditar {
+    position: absolute;
+    top: 0;
+    left: 60%;
+    margin-top: 3%;
+    transform: translateX(-50%);
+    font-size: 15px;
+}
+
+#blah {
+    display: block;
+}
+
+.input-group-narrow {
+    max-width: 440px; /* Establece el ancho máximo a tu preferencia */
+    margin-left: 0px; /* Ajusta el margen izquierdo a tu preferencia */
+}
+
+.smaller-profile-img { /*Ajusta la imagen de usuario*/
+    max-width: 135px; /* Ajusta el ancho máximo según tus preferencias */
+}
+
+.user-info {
+
+    display: flex;
+    align-items: center;
+}
+
+.user-info img {
+    float: left;
+    margin-top: 25px;
+    margin-right: 10px; /* Ajusta el margen a tu preferencia */
+    border: 3px solid black;
+}
+
+
+.col-md-6 {
+    max-width: 440px; /* Establece el ancho máximo a tu preferencia */
+    margin-left: 0px; /* Ajusta el margen izquierdo a tu preferencia */
+}
+
+#btnEditarGuardar{
+    float: right; /* Alinea el botón a la derecha */
+    margin-top: -38px; /* Ajusta el margen superior */
+    padding: 8px 30px;
+    font-size: 1.2rem;
+    
+}
+
+#cardCredenciales {
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    margin: 0px;
+    border: 2px solid #000;
+    border-radius: 25px;
+    margin-top: 44px;
+    max-width: 815px;
+}
+
+#cardHistorial {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 12px;
+    padding-top: 30px;
+    margin: 0px;
+    border: 2px solid #000;
+    border-radius: 25px;
+    margin-top: 30px;
+    max-width: 815px;
+}
+
+/* Estilo para el botón en la tarjeta */
+
+#loginButtom {
+    float: right; /* Alinea el botón a la derecha */
+    margin-top: -40px; /* Ajusta el margen superior */
+    padding: 9px 30px;
+    font-size: 1.1rem;
+    /*margin-right: -384px; Ajusta el margen derecho 
+    padding-left: 100px;
+    padding-top: 20px;*/
+}
+
+#btnAnuncio {
+    float: right; /* Alinea el botón a la derecha */
+    margin-top: -5px; /* Ajusta el margen superior */
+    padding: 6px 30px;
+    font-size: 1.1rem;
+    margin-right: 155px; /*Ajusta el margen derecho 
+    padding-left: 100px;
+    padding-top: 20px;*/
+}
+
+
+.col-md-6{
+    padding-top: 20px;
+}
+
+
+#identificadorLista {
+    background-color: #0D6EFD;
+    color: white;
+}
+
+.scroll-list { /*propiedades del scroll del card-historial*/
+    max-height: 510px; /* Ajusta la altura máxima según tus necesidades */
+    overflow-y: auto;
+}
+
+
+/*//////////Panel Promociones//////////*/
+
+
+#carouselExampleControls img {
+    max-height: 400px; /* Ajusta el tamaño del img */
+    margin: auto; /* Centra la imagen */
+}
+
+/*//////////Pagina Catalogo//////////*/
+
+#btnEditarCategoria{
+    padding: 6px 10px;
+    
+}
+
+#tarjetasCatalogo{
+    padding: 10px 20px;
+    
+}
+
+#textoCatalogo{
+    margin-bottom: -0rem;
+    
+}
+
+/*#stContenedor{
+    margin-left: 70px;
+    
+}*/
+
+
+
+/*//////////Login//////////*/
+#loginButtom {
+
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: 90px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#socialButtoms {
+
+    display: flex;
+    margin-top: 110px;
+    padding: 0px 30px;
+    font-size: 1.1rem;
+    justify-content: space-evenly;
+}
+
+
+#resgistro {
+    margin-top: 70px;
+}
+
+#cardLogin{
+
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-bottom: 30px;
+    padding-top: 20px;
+
+}
+
+#cardRegistro{
+
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 30px;
+    padding-top: 20px;
+
+}
+
+#contenedorLogin{
+    padding-top: 40px;
+}
+
+
+
+
+/*//////////PanelRegistro//////////*/
+
+#buttomBack{
+    margin-right: 330px;
+}
+
+#footerRegistro {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 0; /* Espaciado del pie de página */
+}
