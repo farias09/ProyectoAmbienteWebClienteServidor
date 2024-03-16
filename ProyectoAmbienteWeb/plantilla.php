@@ -20,7 +20,7 @@ function MostrarNavbar()
                         <ul class="navbar-nav">
                             <li class="nav-item px-2"><a class="nav-link" href="categoriasPanel.php">Catalogo</a></li>
                             <li class="nav-item px-2"><a class="nav-link" href="promocionesPanel.php">Promociones</a></li>
-                            <li class="nav-item px-2"><a class="nav-link" href="contactoPanel.php">Contactanos</a></li>
+                            <li class="nav-item px-2"><a class="nav-link" href="contactoPanel.php">Acerca de Nosotros</a></li>
                         </ul>
 
                         <!-- Toggle para la búsqueda en el nav -->
