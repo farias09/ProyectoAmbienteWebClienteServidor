@@ -13,7 +13,7 @@ session_start();
 
 $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
 
-if (!in_array($categoria, ['dulces', 'bebidas'])) {
+if (!in_array($categoria, ['dulces', 'bebidas', 'cereales', 'frutas', 'carnes', 'verduras', 'chocolates', 'embutidos', 'congelados', 'panaderia', 'lacteos','licores'])) {
     die('Categoría no válida');
 }
 
