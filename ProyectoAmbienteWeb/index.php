@@ -21,6 +21,18 @@ session_start();
 
         <section id="main-header" class="py-0">
             <div class="container">
+                <!-- Banner de Bienvenida -->
+                <section id="banner">
+                    <div class="container">
+                        <a href="promocionesPanel.php">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img src="img/BANNER.png" alt="Banner" class="img-fluid">
+                            </div>
+                        </div>
+                    </a>
+                    </div>
+                </section>
                 <div class="row">
                     <div id="tarjetas-section" class="col-md-6">
                         <!-- Titulo principal para la pagina -->
