@@ -273,3 +273,15 @@
     color: #fff;
     padding: 10px 0; /* Espaciado del pie de página */
 }
+
+.imagenes {
+    display: flex; /* Esto permite que las imágenes estén una al lado de la otra */
+}
+
+.imagen-redondeada {
+    border-radius: 10px; /* Define bordes redondeados para las imágenes */
+    margin-right: 10px; /* Ajusta el margen entre las imágenes */
+    width: 200px; /* Establece el ancho máximo al 100% del contenedor */
+    height: auto; /* Permite que la altura se ajuste automáticamente según el ancho */
+    border: 2px solid #000;
+}

@@ -2,7 +2,7 @@
 /** 2.
  * Este archivo muestra los artículos de una categoría.
  * 
- * Obtiene la categoria de los parámetros del href de categoriasPanel de cada tarjeya.
+ * Obtiene la categoria de los parámetros del href de categoriasPanel de cada tarjeta.
  * Verifica si la categoria es valida.
  * Ejecuta una consulta para obtener los productos de la categoria especificada.
  */
@@ -35,10 +35,35 @@ $resultado = mysqli_query($conn, $query);
     <?php MostrarNavbar(); ?>
 
     <section id="main-header" class="py-0">
-        <div class="container" style="margin-top: 10px;">
+        <div class="container">
             <div class="row">
-                <div id="tarjetas-section" class="col-md-6" style="margin-bottom: 20px;">
-                    <h1><b><?php echo ucfirst($categoria); ?></b></h1>
+                <div class="col-md-12">
+                    <!-- Mostrar una imagen diferente según la categoría -->
+                    <?php if ($categoria == 'dulces'): ?>
+                        <img src="img/DULCES.png" class="img-fluid" alt="Dulces header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria == 'bebidas'): ?>
+                        <img src="img/BEBIDAS.png" class="img-fluid" alt="Bebidas header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria == 'cereales'): ?>
+                        <img src="img/CEREALES.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria == 'frutas'): ?>
+                        <img src="img/FRUTAS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria == 'carnes'): ?>
+                        <img src="img/CARNES.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria == 'verduras'): ?>
+                        <img src="img/VERDURAS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria == 'chocolates'): ?>
+                        <img src="img/CHOCOLATES.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria == 'embutidos'): ?>
+                        <img src="img/EMBUTIDOS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria == 'congelados'): ?>
+                        <img src="img/CONGELADOS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria == 'panaderia'): ?>
+                        <img src="img/PANADERIA.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria == 'lacteos'): ?>
+                        <img src="img/LACTEOS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria == 'licores'): ?>
+                        <img src="img/LICORES.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">   
+                    <?php endif; ?>
                 </div>
             </div>
 
