@@ -48,6 +48,11 @@ $detalles_producto = mysqli_fetch_assoc($resultado);
                         <h5 class="card-title"><?php echo $detalles_producto['nombreProducto']; ?></h5>
                         <p class="card-text"><?php echo $detalles_producto['descripcion']; ?></p>
                         <p class="card-text">Precio: ₡<?php echo number_format($detalles_producto['precio'], 2); ?></p>
+                        <!-- Botón para agregar al carrito -->
+                    <form action="agregar_al_carrito.php" method="post">
+                        <input type="hidden" name="id_producto" value="<?php echo $detalles_producto['id_producto']; ?>">
+                        <input type="submit" class="btn btn-primary" value="Agregar al carrito">
+                    </form>
                     </div>
                 </div>
             </div>
