@@ -18,65 +18,85 @@ session_start();
     <?php
     MostrarNavbar();
     ?>
-
-        <section id="main-header" class="py-0">           
-            <div class="container" style="margin-top: 10px;">
-                <h1><b>Carrito de Compras</b></h1>
-                <br>
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="card" style="width: 100%; border-spacing: 10px;">
-                            <div class="card-body">
-                                <h5 class="card-title">Productos en el Carrito</h5>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Nombre</th>
-                                            <th>Precio</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Snickers</td>
-                                            <td>$1.00</td>
-                                            <td>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Morenitos</td>
-                                            <td>$5.00</td>
-                                            <td>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Carne Molida</td>
-                                            <td>$9.00</td>
-                                            <td>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+        <section id="main-header" class="py-0">
+            <div class="container">
+                <!-- Banner de Bienvenida -->
+                <section id="banner">
+                    <div class="container">
+                        <a href="promocionesPanel.php">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img src="img/CARRRITO.png" alt="Banner" class="img-fluid">
                             </div>
                         </div>
+                    </a>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card" style="width: 100%;">
-                            <div class="card-body">
-                                <h5 class="card-title">Desglose</h5>
-                                <p class="card-text">Subtotal: $23.00</p>
-                                <p class="card-text">Impuestos: $2.30</p>
-                                <p class="card-text">Total: $25.30</p>
-                                <a href="#" class="btn btn-primary">Procesar Pago</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </section>   
+            <div>
+
+            <div class="container" style="margin-top: 10px; color: black;">
+                <?php
+                // Verificar si el carrito está vacío
+                if (empty($_SESSION['carrito'])) {
+                echo "<p>El carrito está vacío.</p>";
+                } else {
+                // Si el carrito no está vacío, mostrar los productos en el carrito
+                    // Función para eliminar un artículo del carrito
+                    function eliminarArticuloCarrito($id_producto) {
+
+                    // Eliminar el artículo del carrito usando el ID del producto
+                    unset($_SESSION['carrito'][$id_producto]);
+                    }
+
+                    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['eliminar'])) {
+                    $id_producto_eliminar = $_POST['eliminar'];
+                    eliminarArticuloCarrito($id_producto_eliminar);
+                    }
+
+                    // Obtener todos los IDs de productos en el carrito
+                    $ids_productos = array_keys($_SESSION['carrito']);
+
+                    // Consultar la base de datos para obtener los detalles de los productos en el carrito
+                    $query = "SELECT id_producto, nombreProducto, precio FROM productos WHERE id_producto IN (" . implode(',', $ids_productos) . ")";
+                    $resultado = mysqli_query($conn, $query);
+
+                    // Verificar si se obtuvieron resultados
+                    if ($resultado && mysqli_num_rows($resultado) > 0) {
+                    echo "<h2>Carrito de Compras</h2>";
+                    echo "<table>";
+                    echo "<tr><th>Producto</th><th>Precio Unitario</th><th>Cantidad</th><th>Precio Total</th><th></th></tr>";
+
+                    while ($row = mysqli_fetch_assoc($resultado)) {
+                    $id_producto = $row['id_producto'];
+                    $nombre_producto = $row['nombreProducto'];
+                    $precio_unitario = $row['precio'];
+                    $cantidad = $_SESSION['carrito'][$id_producto]['cantidad'];
+                    $precio_total = $precio_unitario * $cantidad;
+
+                    echo "<tr>";
+                    echo "<td>{$nombre_producto}</td>";
+                    echo "<td>{$precio_unitario}</td>";
+                    echo "<td>{$cantidad}</td>";
+                    echo "<td>{$precio_total}</td>";
+                    echo "<td><form method='post'><input type='hidden' name='eliminar' value='{$id_producto}'><button type='submit' class='btn btn-primary'>Eliminar</button></form></td>";
+                    echo "</tr>";
+                    }
+
+                echo "</table>";
+
+                // Agregar el botón para completar la compra
+                echo "<form method='post'>";
+                echo "<button type='submit' name='completar_compra' class='btn btn-primary'>Completar Compra</button>";
+                echo "</form>";
+                } else {
+                echo "<p>El carrito está vacío.</p>";
+                }
+                }
+                ?>
             </div>
         </section>
-
-        <?php
+    <?php
         MostrarFooter();
-        ?>
+    ?>
     </body>
 </html>
