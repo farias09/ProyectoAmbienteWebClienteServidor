@@ -78,8 +78,8 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
 INSERT INTO cliente (id_cliente, nombre, correo, numero_telefono, direccion, cedula, username, password, ruta_imagen, activo) VALUES
-(1, 'Juan Carlos Morales Silva', 'Juan1234@gmail.com', 123456789, ' San Jose - Residencial Los Pinos, Calle 5', 184720483, 'juan12', '$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.', 'https://th.bing.com/th/id/OIP.GyMB5gJgjcN3koFUW6TRPwHaHa?w=500&h=500&rs=1&pid=ImgDetMain', true),
-(2, 'Ana María Silva Flores', 'Ana5322@gmail.com', 12345678, 'Heredia - Residencial La Floresta, Calle Principal', 123456789, 'ana_maria53', '$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.', 'https://ab-innovativesolutions.com/wp-content/uploads/sites/5/2019/09/Persona-1-445x445.jpg', true),
+(1, 'Juan Carlos Morales Silva', 'Juan1234@gmail.com', 123456789, ' San Jose - Residencial Los Pinos, Calle 5', 184720483, 'juan12', '$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.', 'https://www.afondochile.cl/site/wp-content/uploads/2018/06/jose-vaisman-e1529942487664.jpg', true),
+(2, 'Ana María Silva Flores', 'Ana5322@gmail.com', 123456789, 'Heredia - Residencial La Floresta, Calle Principal', 123456789, 'ana_maria53', '$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.', 'https://ab-innovativesolutions.com/wp-content/uploads/sites/5/2019/09/Persona-1-445x445.jpg', true),
 (3, 'Isabella Ruiz Vargas', 'Isabella1732@gmail.com', 123456789, 'San Jose - Residencial El Bosque, Calle Amapola', 123456789, 'isabella17', '$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.', 'https://media.biobiochile.cl/wp-content/uploads/2019/02/captura-realizada-el-2019-02-25-17-21-56.png', true),
 (4, 'Adrian García López', 'Adrian9472@gmail.com', 123456789, 'San Jose - Condominio San Gabriel, Calle 10', 123456789, 'adrian94', '$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.', 'https://media.biobiochile.cl/wp-content/uploads/2019/02/captura-realizada-el-2019-02-25-15-37-02.png', true),
 (5, 'Sofia Rodríguez Mendoza', 'Valentina4723@gmail.com', 123456789, 'Puntarenas - Residencial Marítimo, Calle del Mar', 123456789, 'valentina47', '$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.', 'https://cdnb.20m.es/sites/112/2019/04/cara6.jpg', true),
@@ -95,21 +95,21 @@ INSERT INTO cliente (id_cliente, nombre, correo, numero_telefono, direccion, ced
 (15, 'Laura Sánchez García', 'Laura2345@gmail.com', 123456789, 'Tibas - Santa Rosa, Avenida 10', 123456789, 'laura23', '$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.', 'https://i.pinimg.com/280x280_RS/42/03/a5/4203a57a78f6f1b1cc8ce5750f614656.jpg', true);
 
 INSERT INTO rol (id_rol, nombre, id_cliente) VALUES 
-(1,'ROLE_ADMIN',1), (2,'ROLE_USER',1),
-(3,'ROLE_ADMIN',2), (4,'ROLE_USER',2),
-(5,'ROLE_ADMIN',3), (6,'ROLE_USER',3),
-(7,'ROLE_ADMIN',4), (8,'ROLE_USER',4),
-(9,'ROLE_ADMIN',5), (10,'ROLE_USER',5),
-(11,'ROLE_USER',6),
-(12,'ROLE_USER',7),
-(13,'ROLE_USER',8),
-(14,'ROLE_USER',9),
-(15,'ROLE_USER',10),
-(16,'ROLE_USER',11),
-(17,'ROLE_USER',12),
-(18,'ROLE_USER',13),
-(19,'ROLE_USER',14),
-(20,'ROLE_USER',15);
+(1,'ROLE_ADMIN',1),
+(2,'ROLE_ADMIN',2),
+(3,'ROLE_ADMIN',3),
+(4,'ROLE_ADMIN',4),
+(5,'ROLE_ADMIN',5),
+(6,'ROLE_USER',6),
+(7,'ROLE_USER',7),
+(8,'ROLE_USER',8),
+(9,'ROLE_USER',9),
+(10,'ROLE_USER',10),
+(11,'ROLE_USER',11),
+(12,'ROLE_USER',12),
+(13,'ROLE_USER',13),
+(14,'ROLE_USER',14),
+(15,'ROLE_USER',15);
 
 
 -- Insertar datos para la categoría Dulces

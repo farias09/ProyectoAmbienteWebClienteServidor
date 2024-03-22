@@ -34,12 +34,12 @@ session_start();
 
                                 <!-- Formulario de Registro -->
 
-                                <form method="post" action="ProcesosLR.php" object="${cliente}">
+                                <form method="post" action="ProcesosLR.php">
                                     <div class="mb-3" style="margin: 20px;">
                                         <label for="nombre" class="form-label">Nombre Completo</label>
                                         <div class="input-group">
                                             <span class="input-group-text" style="border: 1px solid #858585; background: #4F4D5E;"><i class="fa-solid fa-user" style="color: #ffffff;"></i></span>
-                                            <input type="text" class="form-control" id="nombre" name="nombre" style="border: 1px solid #AEAEAE; background: #4F4D5E; color: #fff;" field="*{nombre}" required="true"/>
+                                            <input type="text" class="form-control" id="nombre" name="nombre" style="border: 1px solid #AEAEAE; background: #4F4D5E; color: #fff;" field="*{nombre}" required="true" maxlength="30"/>
                                         </div>
                                     </div>
 
@@ -47,16 +47,17 @@ session_start();
                                         <label for="cedula" class="form-label">Numero de Cedula</label>
                                         <div class="input-group">
                                             <span class="input-group-text" style="border: 1px solid #858585; background: #4F4D5E;"><i class="fa-solid fa-id-card" style="color: #ffffff;"></i></span>
-                                            <input type="text" class="form-control" id="inputCedula" name="cedula" style="border: 1px solid #AEAEAE; background: #4F4D5E; color: #fff;" field="*{cedula}" required="true"/>
+                                            <input type="text" class="form-control" id="inputCedula" name="cedula" style="border: 1px solid #AEAEAE; background: #4F4D5E; color: #fff;" field="*{cedula}" required="true" maxlength="9"/>
                                         </div>
                                     </div>
+
 
                                     <div class="mb-3" style="margin: 20px;">
                                         <label for="username" class="form-label">Username</label><br>
                                         <div class="input-group">
                                             <span class="input-group-text" style="border: 1px solid #858585; background: #4F4D5E;"><i class="fa-solid fa-user-tag" style="color: #ffffff;"></i></span>
                                             <input type="text" class="form-control" id="username" name="username" style="border: 1px solid #AEAEAE; background: #4F4D5E; color: #fff;" field="*{username}"
-                                                    required="true"/>
+                                                    required="true" maxlength="15"/>
                                         </div>
                                     </div>
 
@@ -64,7 +65,7 @@ session_start();
                                         <label for="correo" class="form-label">Correo Electronico</label>
                                         <div class="input-group">
                                             <span class="input-group-text" style="border: 1px solid #858585; background: #4F4D5E;"><i class="fa-solid fa-envelope" style="color: #ffffff;"></i></span>
-                                            <input type="correo" class="form-control" id="correo" name="correo" style="border: 1px solid #AEAEAE; background: #4F4D5E; color: #fff;" field="*{correo}" required/>
+                                            <input type="correo" class="form-control" id="correo" name="correo" style="border: 1px solid #AEAEAE; background: #4F4D5E; color: #fff;" field="*{correo}" required="true" maxlength="30"/>
                                         </div>
                                     </div>
 
@@ -85,6 +86,7 @@ session_start();
                                     </div>
 
                                     <button type="submit" class="btn btn-primary" id="loginButtom">Confirmar</button>
+                                    <input type="hidden" name="action" value="Registro">
                                 </form>
                             </div>
                         </div>
