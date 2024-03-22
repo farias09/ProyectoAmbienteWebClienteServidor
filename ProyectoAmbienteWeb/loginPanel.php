@@ -7,12 +7,13 @@ session_start();
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<title>TICORGANIKO</title>
-<meta charset="UTF-8" />
-<link rel="stylesheet" href="css/estilos.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://kit.fontawesome.com/0a39c8afa7.js" crossorigin="anonymous"></script>
+    <title>TICORGANIKO</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0a39c8afa7.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -85,28 +86,37 @@ session_start();
     </section>
 
     <!-- Modal -->
-    <!--
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLabel">Error de inicio de sesión</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>[[#{error.login}]]</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel"><b>Error de inicio de sesión</b></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5>El usuario o la contraseña son incorrectos. Por favor, inténtalo de nuevo.</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
-        REVISAR-->
+    </div>
 
-        <?php
+    <script>
+    <?php if(isset($_GET['error']) && $_GET['error'] == 'login'): ?>
+    $(document).ready(function() {
+        $('#errorModal').modal('show');
+    });
+    <?php endif; ?>
+    </script>
+
+
+
+    <?php
         MostrarFooter();
-        ?>
+    ?>
 </body>
 
 </html>

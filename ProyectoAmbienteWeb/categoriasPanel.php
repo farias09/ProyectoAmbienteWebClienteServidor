@@ -6,12 +6,13 @@ session_start();
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<title>TICORGANIKO</title>
-<meta charset="UTF-8" />
-<link rel="stylesheet" href="css/estilos.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://kit.fontawesome.com/0a39c8afa7.js" crossorigin="anonymous"></script>
+    <title>TICORGANIKO</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0a39c8afa7.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -71,9 +72,7 @@ session_start();
                     <div class="card">
                         <!-- el href redirecciona al articulosPanel ademas de identificar la categoria de la tarjeta seleccionada -->
                         <a href="articulosPanel.php?categoria=bebidas" class="card-link">
-                            <img class="card-img-top"
-                                src="img/bebidas.jpg"
-                                alt="" width="300" height="150" />
+                            <img class="card-img-top" src="img/bebidas.jpg" alt="" width="300" height="150" />
                             <div id="tarjetasCatalogo"
                                 class="card-body d-flex justify-content-between align-items-center">
                                 <p id="textoCatalogo" class="card-text">Bebidas</p>
@@ -305,7 +304,7 @@ session_start();
                                     </a>
                                 </div>
                             </div>
-                    
+
                         </a>
                     </div>
                 </div>

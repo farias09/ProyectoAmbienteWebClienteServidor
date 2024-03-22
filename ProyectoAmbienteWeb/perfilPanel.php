@@ -28,7 +28,8 @@ session_start();
                         <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarImagen" id="imgEditar">
                             <i class="fa-solid fa-camera"></i> Actualizar Imagen
                         </button>
-                        <img src="<?php echo $_SESSION['ruta_imagen']; ?>" class="rounded-circle smaller-profile-img" alt="FotoPerfil" height="120"/>
+                        <img style="float: left;width: 120px; height: 120px; object-fit: cover;" 
+                        src="<?php echo $_SESSION['ruta_imagen']; ?>" class="rounded-circle smaller-profile-img" alt="FotoPerfil" height="120"/>
                         <div>
                             <h5 style="color: black; margin-top: 15px;"><?php echo $_SESSION['nombre']; ?></h5>
                             <p style="color: black">
@@ -77,18 +78,23 @@ session_start();
                         <div class="row">
                             <div class="col-md-6" style="padding-top: 15px;">
                                 <label for="inputCedula" class="form-label">Número de Cedula</label>
-                                <input type="text" class="form-control custom-field" id="inputCedula" value="<?php echo $_SESSION['cedula']; ?>" readonly>
+                                <?php
+                                $cedula = $_SESSION['cedula'];
+                                $formatoCedula = substr_replace($cedula, '-', 1, 0);
+                                $formatoCedula = substr_replace($formatoCedula, '-', 6, 0);
+                                ?>
+                                <input type="text" class="form-control custom-field" id="inputCedula" value="<?php echo $formatoCedula; ?>" readonly>
                             </div>
                             <div class="col-md-6" style="padding-top: 15px;">
                                 <label for="inputTelefono" class="form-label">Número de Teléfono</label>
-                                <input type="text" class="form-control custom-field" id="inputTelefono" value="<?php echo $_SESSION['numero_telefono']; ?>" readonly>
+                                <input type="text" class="form-control custom-field" id="inputTelefono" placeholder="Sin informacion..." value="<?php echo $_SESSION['numero_telefono']; ?>" readonly>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6" style="padding-top: 15px;">
                                 <label for="inputDireccionResidencia" class="form-label">Dirección de Residencia</label>
-                                <textarea class="form-control custom-field" id="inputDireccionResidencia" rows="5" style="height: 80px;" readonly><?php echo $_SESSION['direccion']; ?></textarea>
+                                <textarea class="form-control custom-field" id="inputDireccionResidencia" rows="5" style="height: 80px;" placeholder="Sin informacion..." readonly><?php echo $_SESSION['direccion']; ?></textarea>
                             </div>
                             <div class="col-md-6" style="padding-top: 15px;">
                                 <label for="inputContraseña" class="form-label" style="padding-top: 40px;">Contraseña</label>
@@ -97,15 +103,20 @@ session_start();
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6" style="padding-top: 15px;">
-                                <label for="inputMetodoPago" class="form-label">Método de Pago</label>
-                                <select id="inputMetodoPago" class="form-select custom-field" readonly>
-                                    <option selected>Choose...</option>
+                        <div class="col-md-6" style="padding-top: 15px;">
+                                    <label for="username" class="form-label">Metodo de Pago</label><br>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa-regular fa-credit-card"></i></span>
+                                        <select id="inputMetodoPago" class="form-select custom-field" readonly>
+                                    <option selected>Desplegar...</option>
                                     <option>MasterCard</option>
                                     <option>Visa</option>
                                     <option>American Express</option>
                                 </select>
-                            </div>
+                                    </div>
+                                </div>
+
+                    
                         </div>
 
                         <div class="col-md-13 d-flex justify-content-end align-items-center">
