@@ -57,40 +57,44 @@ session_start();
                     $ids_productos = array_keys($_SESSION['carrito']);
 
                     // Consultar la base de datos para obtener los detalles de los productos en el carrito
+                    if (!empty($ids_productos)) { //Se agrega esta verificacion para asegurar que $ids_productos no este vacio
                     $query = "SELECT id_producto, nombreProducto, precio FROM productos WHERE id_producto IN (" . implode(',', $ids_productos) . ")";
                     $resultado = mysqli_query($conn, $query);
 
                     // Verificar si se obtuvieron resultados
                     if ($resultado && mysqli_num_rows($resultado) > 0) {
-                    echo "<h2>Carrito de Compras</h2>";
-                    echo "<table>";
-                    echo "<tr><th>Producto</th><th>Precio Unitario</th><th>Cantidad</th><th>Precio Total</th><th></th></tr>";
-
-                    while ($row = mysqli_fetch_assoc($resultado)) {
-                    $id_producto = $row['id_producto'];
-                    $nombre_producto = $row['nombreProducto'];
-                    $precio_unitario = $row['precio'];
-                    $cantidad = $_SESSION['carrito'][$id_producto]['cantidad'];
-                    $precio_total = $precio_unitario * $cantidad;
-
-                    echo "<tr>";
-                    echo "<td>{$nombre_producto}</td>";
-                    echo "<td>{$precio_unitario}</td>";
-                    echo "<td>{$cantidad}</td>";
-                    echo "<td>{$precio_total}</td>";
-                    echo "<td><form method='post'><input type='hidden' name='eliminar' value='{$id_producto}'><button type='submit' class='btn btn-primary'>Eliminar</button></form></td>";
-                    echo "</tr>";
+                        echo "<h2>Carrito de Compras</h2>";
+                        echo "<table>";
+                        echo "<tr><th>Producto</th><th>Precio Unitario</th><th>Cantidad</th><th>Precio Total</th><th></th></tr>";
+    
+                        while ($row = mysqli_fetch_assoc($resultado)) {
+                        $id_producto = $row['id_producto'];
+                        $nombre_producto = $row['nombreProducto'];
+                        $precio_unitario = $row['precio'];
+                        $cantidad = $_SESSION['carrito'][$id_producto]['cantidad'];
+                        $precio_total = $precio_unitario * $cantidad;
+    
+                        echo "<tr>";
+                        echo "<td>{$nombre_producto}</td>";
+                        echo "<td>{$precio_unitario}</td>";
+                        echo "<td>{$cantidad}</td>";
+                        echo "<td>{$precio_total}</td>";
+                        echo "<td><form method='post'><input type='hidden' name='eliminar' value='{$id_producto}'><button type='submit' class='btn btn-primary'>Eliminar</button></form></td>";
+                        echo "</tr>";
+                        }
+    
+                    echo "</table>";
+    
+                    // Agregar el botón para completar la compra
+                    echo "<form method='post'>";
+                    echo "<button type='submit' name='completar_compra' class='btn btn-primary'>Completar Compra</button>";
+                    echo "</form>";
+                    } else {
+                    echo "<p>El carrito está vacío.</p>";
+                    } 
+                    } else {
+                        echo "<p>El carrito está vacío.</p>";
                     }
-
-                echo "</table>";
-
-                // Agregar el botón para completar la compra
-                echo "<form method='post'>";
-                echo "<button type='submit' name='completar_compra' class='btn btn-primary'>Completar Compra</button>";
-                echo "</form>";
-                } else {
-                echo "<p>El carrito está vacío.</p>";
-                }
                 }
                 ?>
             </div>

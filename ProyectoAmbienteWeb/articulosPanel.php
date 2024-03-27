@@ -47,23 +47,23 @@ $resultado = mysqli_query($conn, $query);
                     <?php elseif ($categoria == 'cereales'): ?>
                     <img src="img/CEREALES.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
                     <?php elseif ($categoria == 'frutas'): ?>
-                    <img src="img/FRUTAS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <img src="img/FRUTAS.png" class="img-fluid" alt="Frutas header" style="margin-bottom: 30px;">
                     <?php elseif ($categoria == 'carnes'): ?>
-                    <img src="img/CARNES.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <img src="img/CARNES.png" class="img-fluid" alt="Carnes header" style="margin-bottom: 30px;">
                     <?php elseif ($categoria == 'verduras'): ?>
-                    <img src="img/VERDURAS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <img src="img/VERDURAS.png" class="img-fluid" alt="Verduras header" style="margin-bottom: 30px;">
                     <?php elseif ($categoria == 'chocolates'): ?>
-                    <img src="img/CHOCOLATES.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <img src="img/CHOCOLATES.png" class="img-fluid" alt="Chocolates header" style="margin-bottom: 30px;">
                     <?php elseif ($categoria == 'embutidos'): ?>
-                    <img src="img/EMBUTIDOS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <img src="img/EMBUTIDOS.png" class="img-fluid" alt="Embutidos header" style="margin-bottom: 30px;">
                     <?php elseif ($categoria == 'congelados'): ?>
-                    <img src="img/CONGELADOS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <img src="img/CONGELADOS.png" class="img-fluid" alt="Congelados header" style="margin-bottom: 30px;">
                     <?php elseif ($categoria == 'panaderia'): ?>
-                    <img src="img/PANADERIA.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <img src="img/PANADERIA.png" class="img-fluid" alt="Panaderia header" style="margin-bottom: 30px;">
                     <?php elseif ($categoria == 'lacteos'): ?>
-                    <img src="img/LACTEOS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <img src="img/LACTEOS.png" class="img-fluid" alt="Lacteos header" style="margin-bottom: 30px;">
                     <?php elseif ($categoria == 'licores'): ?>
-                    <img src="img/LICORES.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <img src="img/LICORES.png" class="img-fluid" alt="Licores header" style="margin-bottom: 30px;">
                     <?php endif; ?>
                 </div>
             </div>
