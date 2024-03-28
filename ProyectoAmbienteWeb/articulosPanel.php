@@ -17,7 +17,7 @@ if (!in_array($categoria, ['dulces', 'bebidas', 'cereales', 'frutas', 'carnes', 
     die('Categoría no válida');
 }
 
-$query = "SELECT * FROM productos WHERE categoria = '$categoria'";
+$query = "SELECT * FROM productos WHERE id_categoria = (SELECT id_categoria FROM categorias WHERE nombre_categoria = '$categoria')";
 $resultado = mysqli_query($conn, $query);
 ?>
 
