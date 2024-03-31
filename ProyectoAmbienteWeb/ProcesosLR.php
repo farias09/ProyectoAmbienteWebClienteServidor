@@ -71,7 +71,21 @@ function registrarUsuario() {
         $sqlRol = "INSERT INTO rol (nombre, id_cliente) VALUES ('ROLE_USER', '$idCliente')";
 
         if ($conn->query($sqlRol) === TRUE) {
-            header("Location: loginPanel.php");
+            // Iniciar sesión automáticamente
+            session_start();
+            $_SESSION["username"] = $usuario;
+            $_SESSION["nombre"] = $nombre;
+            $_SESSION["correo"] = $correo;
+            $_SESSION["cedula"] = $cedula;
+            $_SESSION["numero_telefono"] = "";
+            $_SESSION["direccion"] = "";
+            $_SESSION["password"] = $password;
+            $_SESSION["ruta_imagen"] = $imagen_default;
+            $_SESSION["role"] = "ROLE_USER";
+
+            // Redirigir al perfilPanel.php
+            header("Location: perfilPanel.php");
+            exit(); // Asegurarse de que se detiene la ejecución del script después de la redirección
         } else {
             echo "Error al asignar el rol al usuario: " . $conn->error;
         }
@@ -79,6 +93,8 @@ function registrarUsuario() {
         echo "Error al registrar el usuario: " . $conn->error;
     }
 }
+
+
 
 /////////////////////////////////////////////////////////////////////////////////
 
