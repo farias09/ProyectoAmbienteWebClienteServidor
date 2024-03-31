@@ -2,7 +2,12 @@
 <?php
 include "conexion.php";
 include_once "plantilla.php";
-session_start();
+include_once "ProcesosLR.php";
+
+// se verifica si el usuario tiene acceso al panel de perfil por medio del rol USER
+if (!verificarAccesoUser()) {
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,9 +30,6 @@ session_start();
             <div class="row">
                 <div class="col-md-8">
                     <div class="user-info">
-                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarImagen" id="imgEditar">
-                            <i class="fa-solid fa-camera"></i> Actualizar Imagen
-                        </button>
                         <img style="float: left;width: 120px; height: 120px; object-fit: cover;" 
                         src="<?php echo $_SESSION['ruta_imagen']; ?>" class="rounded-circle smaller-profile-img" alt="FotoPerfil" height="120"/>
                         <div>
@@ -37,29 +39,6 @@ session_start();
                                 <br>
                                 <strong>Dirección: </strong><span><?php echo $_SESSION['direccion']; ?></span>
                             </p>
-                        </div>
-                    </div>
-
-                    <!-- Modal para actualizar la Imagen del Perfil -->
-                    <div class="modal fade" id="modalEditarImagen" tabindex="-1" aria-labelledby="modalEditarImagenLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalEditarImagenLabel" style="color: black;">Actualizar Imagen de Perfil</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <!-- Formulario para actualizar la imagen -->
-                                    <form action="@{/perfil/actualizar-imagen}" method="post" enctype="multipart/form-data">
-                                        <div class="mb-3">
-                                            <label for="inputImagen" class="form-label" style="color: black;">Seleccionar nueva imagen</label>
-                                            <input type="file" class="form-control" id="inputImagen" name="imagenFile" onchange="readURL(this);"/>
-                                            <img id="blah" src="#" alt="your image" height="200"/>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Confirmar</button>
-                                    </form>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -120,7 +99,7 @@ session_start();
                         </div>
 
                         <div class="col-md-13 d-flex justify-content-end align-items-center">
-                            <a href="@{/perfil/modificar}">
+                            <a href="perfilPanelM.php">
                                 <button id="btnEditarGuardar" type="button" class="btn btn-dark card-button">Editar Perfil</button>
                             </a>
                         </div>
