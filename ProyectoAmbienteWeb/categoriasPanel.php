@@ -45,7 +45,7 @@ $categorias = array(
                 </div>
                 <div class="col-md-6">
                     <div class="d-flex justify-content-end align-items-center mb-3">
-                        <a href="#" style="padding-top: 30px;">
+                        <a href="agregar_categoria.php" style="padding-top: 30px;">
                             <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"
                                     style="margin-right: 5px;"></i>Añadir Categoria</button>
                         </a>
