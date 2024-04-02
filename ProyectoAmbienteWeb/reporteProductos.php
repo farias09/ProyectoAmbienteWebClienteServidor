@@ -9,7 +9,7 @@ if (!verificarAccesoAdmin()) {
 }
 
 // Consulta SQL para obtener todos los productos
-$sqlProductos = "SELECT * FROM productos";
+$sqlProductos = "SELECT p.*, c.nombre_categoria FROM productos p JOIN categorias c ON p.id_categoria = c.id_categoria";
 $resultProductos = $conn->query($sqlProductos);
 ?>
 
@@ -66,7 +66,7 @@ $resultProductos = $conn->query($sqlProductos);
                                         <td><?php echo $contador; ?></td>
                                         <td><?php echo $producto['nombreProducto']; ?></td>
                                         <td><?php echo $producto['descripcion']; ?></td>
-                                        <td><?php echo $producto['categoria']; ?></td>
+                                        <td><?php echo $producto['nombre_categoria']; ?></td>
                                         <td><?php echo "₡" . number_format($producto['precio'], 2); ?></td>
                                         <td><?php echo $producto['codigo']; ?></td>
                                         <td><?php echo $producto['promocion']; ?></td>
