@@ -65,30 +65,38 @@ $resultado = mysqli_query($conn, $query);
                     <?php elseif ($categoria == 'licores'): ?>
                     <img src="img/LICORES.png" class="img-fluid" alt="Licores header" style="margin-bottom: 30px;">
                     <?php endif; ?>
+                    <div class="row">
+                <div class="col-md-12">
+                    <a href="agregar_productos.php" class="btn btn-primary">Agregar Productos</a>
+                </div>
+            </div>
                 </div>
             </div>
 
             <!-- Tarjeta para mostrar los productos de la categoria seleccionada -->
             <div class="row">
-                <?php while ($fila = mysqli_fetch_assoc($resultado)): ?>
-                <div class="col-3">
-                    <div class="card">
-                        <a href="infoProducto.php?id_producto=<?php echo $fila['id_producto']; ?>" class="card-link">
-                            <img class="card-img-top" src="<?php echo $fila['ruta_imagen']; ?>" alt="" />
-                            <div class="card-body">
-                                <p class="card-text"
-                                    style="font-family: 'Trebuchet MS', sans-serif; text-align: center;">
-                                    <?php echo $fila['nombreProducto'] . " - ₡" . number_format($fila['precio'], 2); ?>
-                                </p>
-
-                            </div>
-                        </a>
-                    </div>
+    <?php while ($fila = mysqli_fetch_assoc($resultado)): ?>
+    <div class="col-3">
+        <div id="tarjetasArticulos" class="card d-flex justify-content-center align-items-center">
+            <a href="infoProducto.php?id_producto=<?php echo $fila['id_producto']; ?>" class="card-link">
+                <img id="tarjetasArticulosimg" class="card-img-top w-75" src="<?php echo $fila['ruta_imagen']; ?>" alt="" />
+                <div id="tarjetasArticulosbody" class="card-body bg-primary">
+                    <p style="font-size: 20px; padding-top: 5px; margin-bottom: 0;"
+                        id="tarjetasArticulostext" class="card-text text-white"><b><?php echo $fila['nombreProducto']; ?></b></p>
+                    <p style="font-size: 18px;" class="card-text text-white">
+                        ₡<?php echo number_format($fila['precio'], 2); ?></p>
                 </div>
-                <?php endwhile; ?>
+            </a>
+            <div class="card-footer">
+                <a href="editar_producto.php?id_producto=<?php echo $fila['id_producto']; ?>" class="btn btn-primary btn-sm">Editar</a>
+                <a href="eliminar_producto.php?id_producto=<?php echo $fila['id_producto']; ?>" class="btn btn-danger btn-sm">Eliminar</a>
             </div>
         </div>
+    </div>
+    <?php endwhile; ?>
+        </div>
     </section>
+
 
     <?php MostrarFooter(); ?>
 </body>

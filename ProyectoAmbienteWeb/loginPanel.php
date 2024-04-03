@@ -54,15 +54,6 @@ session_start();
                                 <button type="submit" class="btn btn-primary" id="loginButtom">Ingresar</button>
                             </form>
 
-                            <!-- <div if="${param.error != null}">
-                                    <script>
-                                        $(document).ready(function () {
-                                            $('#myModal').modal('show');
-                                        });
-                                    </script>
-                                </div>
-                                REVISAR-->
-
                             <div class="social-login" id="socialButtoms">
                                 <img id="google"
                                     src="https://cdn.pixabay.com/photo/2015/09/14/22/59/google-plus-940316_1280.png"

@@ -1,10 +1,15 @@
 <?php
 include "conexion.php";
 include_once "plantilla.php";
-session_start();
+include_once "ProcesosLR.php";
+
+// se verifica si el usuario tiene acceso al panel de reportes por medio del rol ADMIN
+if (!verificarAccesoAdmin()) {
+    exit();
+}
 
 // Consulta SQL para obtener todos los productos
-$sqlProductos = "SELECT * FROM productos";
+$sqlProductos = "SELECT p.*, c.nombre_categoria FROM productos p JOIN categorias c ON p.id_categoria = c.id_categoria";
 $resultProductos = $conn->query($sqlProductos);
 ?>
 
@@ -25,12 +30,12 @@ $resultProductos = $conn->query($sqlProductos);
     ?>
 
     <section id="main-header" class="py-0">
-            <div class="container">
-        <div class="row">
-                    <div class="col-md-6">
-                        <h1 style="margin-bottom: 30px;"><b>Reportes</b></h1>
-                    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 style="margin-bottom: 30px;"><b>Reportes</b></h1>
                 </div>
+            </div>
             <div class="row">
                 <div class="col-md-10">
                     <div class="card">
@@ -61,7 +66,7 @@ $resultProductos = $conn->query($sqlProductos);
                                         <td><?php echo $contador; ?></td>
                                         <td><?php echo $producto['nombreProducto']; ?></td>
                                         <td><?php echo $producto['descripcion']; ?></td>
-                                        <td><?php echo $producto['categoria']; ?></td>
+                                        <td><?php echo $producto['nombre_categoria']; ?></td>
                                         <td><?php echo "₡" . number_format($producto['precio'], 2); ?></td>
                                         <td><?php echo $producto['codigo']; ?></td>
                                         <td><?php echo $producto['promocion']; ?></td>
@@ -98,15 +103,15 @@ $resultProductos = $conn->query($sqlProductos);
                             </h6>
                         </div>
                     </div>
-                    <div class="list-group" style="padding-top: 20px;">
+                    <p class="text-left mb-2" style="padding-top: 40px; color: #000;"><b>Filtro</b></hp>
+                    <div class="list-group">
                         <button type="button" style="border: 1px solid #a9a9a9;"
                             class="list-group-item list-group-item-action" onclick="hrefUsuarios()">Usuarios</button>
-                        <button type="button" style="border: 1px; solid #a9a9a9;"
+                        <button type="button" style="border: 1px solid #a9a9a9;"
                             class="list-group-item list-group-item-action active"
                             onclick="hrefProductos()">Productos</button>
                         <button type="button" style="border: 1px solid #a9a9a9;"
                             class="list-group-item list-group-item-action">Ventas</button>
-
                     </div>
                 </div>
             </div>
@@ -128,4 +133,5 @@ $resultProductos = $conn->query($sqlProductos);
     </script>
 
 </body>
+
 </html>

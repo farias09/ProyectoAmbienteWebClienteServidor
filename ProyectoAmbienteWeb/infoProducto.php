@@ -25,9 +25,10 @@ $detalles_producto = mysqli_fetch_assoc($resultado);
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-    <title>TICORGANIKO - Detalles del Producto</title>
-    <meta charset="UTF-8"/>
+    <title>TICORGANIKO</title>
+    <meta charset="UTF-8" />
     <link rel="stylesheet" href="css/estilos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0a39c8afa7.js" crossorigin="anonymous"></script>
@@ -38,35 +39,55 @@ $detalles_producto = mysqli_fetch_assoc($resultado);
     MostrarNavbar();
     ?>
 
-<!-- Panel para mostrar los detalles del producto seleccionado -->
-<section>
-    <div class="container" style="margin-top: 10px;">
-        <div class="card">
-            <div class="row g-0">
-                <!-- Columna para la imagen -->
-                <div class="col-md-6">
-                    <img class="card-img-top" src="<?php echo $detalles_producto['ruta_imagen']; ?>" alt="">
+    <!-- Panel para mostrar los detalles del producto seleccionado -->
+    <section>
+        <div class="container" style="margin-top: 30px;">
+            <h3 style="padding-bottom: 20px;" class="card-title">
+                <b><?php echo $detalles_producto['nombreProducto']; ?></b>
+            </h3>
+            <div class="row">
+                <div class="col-5 float-right" style="margin-left: 50px;">
+                    <div class="card" style="border-radius: 20px; border: 3px solid #cbcbcb;">
+                        <img class="card-img-top" style="border-radius: 20px;"
+                            src="<?php echo $detalles_producto['ruta_imagen']; ?>" alt="" />
+                    </div>
                 </div>
-                <!-- Columna para la información y el botón -->
-                <div class="col-md-6">
-                    <div class="card-body">
-                        <h2 class="card-title"><?php echo $detalles_producto['nombreProducto']; ?></h2>
-                        <p class="card-text"><?php echo $detalles_producto['descripcion']; ?></p>
-                        <p class="card-text">Precio: ₡<?php echo number_format($detalles_producto['precio'], 2); ?></p>
-                        <!-- Botón para agregar al carrito -->
-                        <form action="agregar_al_carrito.php" method="post">
-                            <input type="hidden" name="id_producto" value="<?php echo $detalles_producto['id_producto']; ?>">
-                            <input type="submit" class="btn btn-primary" value="Agregar al carrito">
+
+                <div class="col-5" style="padding-left: 50px;">
+                    <div class="product-info">
+                        <p style="font-size: 30px;"><b>Descripción</b></p>
+                        <form id="add-to-cart-form" method="post" action="agregar_al_carrito.php">
+                            <h6 style="padding-bottom: 5px;">Código: <?php echo $detalles_producto['codigo']; ?></h6>
+                            <p><?php echo $detalles_producto['descripcion']; ?></p>
+                            <input type="hidden" name="id_producto"
+                                value="<?php echo $detalles_producto['id_producto']; ?>">
+                            <div class="flex-container">
+                                <div>
+                                    <label id="precioConfig"
+                                        class="price">₡<?php echo number_format($detalles_producto['precio'], 2); ?></label>
+                                </div>
+                                <div>
+                                    <label for="cantidad" style="margin-right: 5px;">Cantidad:</label>
+                                    <input type="number" id="cantidad" name="cantidad" value="1" min="1" required>
+                                </div>
+                            </div>
+                            <div class="button-container">
+                                <button type="submit" class="add-to-cart-button" name="add_to_cart">Agregar al
+                                    Carrito</button>
+                                <button type="submit" class="buy-button" name="comprar_ahora">Comprar Ahora</button>
+                            </div>
+
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <?php
     MostrarFooter();
     ?>
 </body>
+
 </html>
