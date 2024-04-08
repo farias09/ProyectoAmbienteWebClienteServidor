@@ -54,7 +54,7 @@ $categorias = array(
             </div>
                     <div class="row">
                         <?php foreach ($categorias as $categoria) : ?>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="card">
                                     <a href="articulosPanel.php?categoria=<?= $categoria['url'] ?>" class="card-link">
                                         <img class="card-img-top" src="<?= $categoria['imagen'] ?>" alt="<?= $categoria['nombre'] ?>" width="300" height="150" />

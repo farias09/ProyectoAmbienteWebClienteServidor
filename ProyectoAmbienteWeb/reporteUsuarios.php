@@ -138,10 +138,9 @@ $resultClientes = $conn->query($sqlClientes);
                         <button type="button" style="border: 1px solid #a9a9a9;"
                             class="list-group-item list-group-item-action" onclick="hrefProductos()">Productos</button>
                         <button type="button" style="border: 1px solid #a9a9a9;"
-                            class="list-group-item list-group-item-action">Ventas</button>
+                            class="list-group-item list-group-item-action" onclick="hrefVentas()">Ventas</button>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -157,6 +156,9 @@ $resultClientes = $conn->query($sqlClientes);
 
     function hrefProductos() {
         window.location.href = "reporteProductos.php";
+    }
+    function hrefVentas() {
+        window.location.href = "reporteVentas.php";
     }
 
     //metodo ajax

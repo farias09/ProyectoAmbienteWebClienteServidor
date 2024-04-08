@@ -111,7 +111,7 @@ $resultProductos = $conn->query($sqlProductos);
                             class="list-group-item list-group-item-action active"
                             onclick="hrefProductos()">Productos</button>
                         <button type="button" style="border: 1px solid #a9a9a9;"
-                            class="list-group-item list-group-item-action">Ventas</button>
+                            class="list-group-item list-group-item-action" onclick="hrefVentas()">Ventas</button>
                     </div>
                 </div>
             </div>
@@ -129,6 +129,10 @@ $resultProductos = $conn->query($sqlProductos);
 
     function hrefProductos() {
         window.location.href = "reporteProductos.php";
+    }
+    
+    function hrefVentas() {
+        window.location.href = "reporteVentas.php";
     }
     </script>
 

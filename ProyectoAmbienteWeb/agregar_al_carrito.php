@@ -7,6 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_producto = isset($_POST['id_producto']) ? $_POST['id_producto'] : '';
     // Obtener la cantidad desde el formulario
     $cantidad = isset($_POST['cantidad']) ? $_POST['cantidad'] : 1;
+    // Obtener el precio del producto desde el formulario (asegúrate de ajustar el nombre del campo en el formulario)
+    $precio = isset($_POST['precio']) ? $_POST['precio'] : 0; 
 
     // Verificar si el ID del producto y la cantidad son válidos
     if (!is_numeric($id_producto) || $id_producto <= 0 || !is_numeric($cantidad) || $cantidad <= 0) {
@@ -24,10 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Si ya está en el carrito, actualizar la cantidad
         $_SESSION['carrito'][$id_producto]['cantidad'] += $cantidad;
     } else {
-        // Si no está en el carrito, agregar el producto con la cantidad especificada
+        // Si no está en el carrito, agregar el producto con la cantidad y el precio especificados
         $_SESSION['carrito'][$id_producto] = array(
             'id_producto' => $id_producto,
-            'cantidad' => $cantidad
+            'cantidad' => $cantidad,
+            'precio' => $precio
         );
     }
 

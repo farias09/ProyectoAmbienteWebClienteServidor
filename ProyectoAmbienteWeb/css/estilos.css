@@ -452,4 +452,37 @@ tr:hover {
     font-family: Vegur, 'PT Sans', sans-serif;
 }
 
+/*//////////Panel de compra realizada//////////*/
+
+.resumen-compra {
+    margin-top: 20px;
+    color: black;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.titulo-resumen {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.producto {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.nombre-producto {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+.detalle {
+    margin-top: 5px;
+    color: #666;
+}
 

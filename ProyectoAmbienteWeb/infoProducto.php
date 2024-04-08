@@ -59,12 +59,11 @@ $detalles_producto = mysqli_fetch_assoc($resultado);
                         <form id="add-to-cart-form" method="post" action="agregar_al_carrito.php">
                             <h6 style="padding-bottom: 5px;">Código: <?php echo $detalles_producto['codigo']; ?></h6>
                             <p><?php echo $detalles_producto['descripcion']; ?></p>
-                            <input type="hidden" name="id_producto"
-                                value="<?php echo $detalles_producto['id_producto']; ?>">
+                            <input type="hidden" name="id_producto" value="<?php echo $detalles_producto['id_producto']; ?>">
+                            <input type="hidden" name="precio" value="<?php echo $detalles_producto['precio']; ?>">
                             <div class="flex-container">
                                 <div>
-                                    <label id="precioConfig"
-                                        class="price">₡<?php echo number_format($detalles_producto['precio'], 2); ?></label>
+                                    <label id="precioConfig" class="price">₡<?php echo number_format($detalles_producto['precio'], 2); ?></label>
                                 </div>
                                 <div>
                                     <label for="cantidad" style="margin-right: 5px;">Cantidad:</label>
@@ -72,14 +71,11 @@ $detalles_producto = mysqli_fetch_assoc($resultado);
                                 </div>
                             </div>
                             <div class="button-container">
-                                <button type="submit" class="add-to-cart-button" name="add_to_cart">Agregar al
-                                    Carrito</button>
+                                <button type="submit" class="add-to-cart-button" name="add_to_cart">Agregar al Carrito</button>
                                 <button type="submit" class="buy-button" name="comprar_ahora">Comprar Ahora</button>
                             </div>
-
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>

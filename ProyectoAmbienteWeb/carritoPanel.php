@@ -112,7 +112,7 @@ session_start();
                             echo "</tbody></table>";
 
                             // Agregar el botón para completar la compra
-                            echo "<form method='post'>";
+                            echo "<form method='post' action='confirmarCompra.php'>";
                             echo "<button type='submit' name='completar_compra' class='btn btn-primary' style='margin-bottom: 25px;'>Completar Compra</button>";
                             echo "</form>";
                         } else {
