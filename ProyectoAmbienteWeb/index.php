@@ -24,7 +24,7 @@ session_start();
                 <!-- Banner de Bienvenida -->
                 <section id="banner">
                     <div class="container">
-                        <a href="promocionesPanel.php">
+                        <a href="ventaFlashPanel.php">
                         <div class="row">
                             <div class="col-md-12">
                                 <img src="img/BANNER.png" alt="Banner" class="img-fluid">
@@ -52,7 +52,7 @@ session_start();
                         </a>
                     </div>
                     <div class="col-md-4 my-2">
-                        <a href="promocionesPanel.php">
+                        <a href="ventaFlashPanel.php">
                             <div class="card">
                                 <!-- Tarjeta 2 venta flash -->
                                 <img class="card-img-top" src="img/home2.jpeg" alt="ventaflash" />

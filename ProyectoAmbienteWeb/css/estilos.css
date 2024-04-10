@@ -284,16 +284,24 @@
 }
 
 .imagenes {
-    display: flex; /* Esto permite que las imágenes estén una al lado de la otra */
+    display: flex; 
 }
 
 .imagen-redondeada {
-    border-radius: 10px; /* Define bordes redondeados para las imágenes */
-    margin-right: 10px; /* Ajusta el margen entre las imágenes */
-    width: 200px; /* Establece el ancho máximo al 100% del contenedor */
-    height: auto; /* Permite que la altura se ajuste automáticamente según el ancho */
+    border-radius: 10px; 
+    margin-right: 10px; 
+    width: 200px; 
+    height: auto; 
     border: 2px solid #000;
 }
+
+.imagenes-redondeada-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
 
 /*Carrito de compras */
 table {
@@ -406,6 +414,11 @@ tr:hover {
     justify-content: space-between;
 }
 
+.flexTest{
+    display: flex;
+    justify-content: space-between;
+}
+
 .button-container {
     display: flex;
     flex-direction: column-reverse;
@@ -486,3 +499,8 @@ tr:hover {
     color: #666;
 }
 
+.contenedor-enlace {
+    display: flex;
+    justify-content: center;
+  }
+  

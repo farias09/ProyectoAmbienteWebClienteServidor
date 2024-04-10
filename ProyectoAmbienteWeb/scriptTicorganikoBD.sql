@@ -103,6 +103,9 @@ INSERT INTO categorias (nombre_categoria) VALUES ('Verduras');
 INSERT INTO categorias (nombre_categoria) VALUES ('Chocolates');
 INSERT INTO categorias (nombre_categoria) VALUES ('Embutidos');
 INSERT INTO categorias (nombre_categoria) VALUES ('Congelados');
+INSERT INTO categorias (nombre_categoria) VALUES ('Panaderia');
+INSERT INTO categorias (nombre_categoria) VALUES ('Lacteos');
+INSERT INTO categorias (nombre_categoria) VALUES ('Licores');
 
 INSERT INTO cliente (id_cliente, nombre, correo, numero_telefono, direccion, cedula, username, password, ruta_imagen, activo) VALUES
 (1, 'Juan Carlos Morales Silva', 'Juan1234@gmail.com', 123456789, ' San Jose - Residencial Los Pinos, Calle 5', 184720483, 'juan12', '$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.', 'https://www.afondochile.cl/site/wp-content/uploads/2018/06/jose-vaisman-e1529942487664.jpg', true),
@@ -144,7 +147,7 @@ VALUES
   ('PushPops', 'PushPops es una marca de paletas de caramelo con un envase cilíndrico que se empuja desde abajo para consumir fácilmente.', 1, 450, 'CH74J2', NULL, TRUE, 'https://i5.walmartimages.com/seo/Jumbo-Push-Pop-Assorted-Flavor-Spring-Lollipop-1-06oz_b253883d-fb42-4627-8dd2-e31454ff5e84.8e0d92e5320a5b030106f04b5bbb8d3d.jpeg'),
   ('Snickers', 'Snickers es una barra de chocolate con relleno de mani y caramelo, cubierta con chocolate.', 1, 350, 'GAU39D', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/287993/Chocolate-Snickers-Original-52-7gr-1-27216.jpg?v=637808279270500000'),
   ('Morenitos', 'Morenitos son dulces de chocolate con leche y coco, muy populares en algunas regiones de América Latina.', 1, 150, 'CAY38C', NULL, TRUE, 'https://www.ticoshopping.com/cdn/shop/products/Capturadepantalla2022-11-30ala_s_11.19.50.png?v=1669828812'),
-  ('Barrilete', 'Barrilete son caramelos con sabor a fruta en forma de barril, muy populares en algunas regiones, especialmente en Latinoamérica.', 1, 200, 'PA194H', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/355592/Caramelo-Super-Barrilete-Sabor-Fruta-400gr-1-31710.jpg?v=638022551350570000');
+  ('Barrilete', 'Barrilete son caramelos con sabor a fruta en forma de barril, muy populares en algunas regiones, especialmente en Latinoamérica.', 1, 200, 'PA194H', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/564621/Caramelo-Super-Barrilete-Sabor-Fruta-400gr-1-31710.jpg?v=638458768116630000');
 -- Insertar datos para la categoría Bebidas
 INSERT INTO productos (nombreProducto, descripcion, id_categoria, precio, codigo, promocion, activo, ruta_imagen)
 VALUES 
@@ -189,7 +192,7 @@ INSERT INTO productos (nombreProducto, descripcion, id_categoria, precio, codigo
 VALUES
 ('Tutto', 'Una marca reconocida por ofrecer una amplia variedad de productos de confitería y dulces, desde chocolates hasta caramelos y galletas. Tutto se destaca por su calidad excepcional y sabores irresistibles que deleitan a los amantes de los dulces en todo el mundo.', 7, 2400.00, 'LMHS2', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/447452/Chocolate-Tutto-Chocolover-200gr-2-28868.jpg?v=638307346138330000'),
 ('Hersheys', 'Una marca icónica de chocolates y dulces, conocida por su delicioso sabor y calidad inigualable. Desde sus clásicas barras de chocolate hasta sus diversos productos como Kisses, Reeses y Kit Kat, Hersheys ofrece una amplia gama de opciones para satisfacer cualquier antojo de dulces.', 7, 890.00, 'L24S6', NULL, TRUE, 'https://i5.walmartimages.com/seo/Hershey-s-Milk-Chocolate-Full-Size-Candy-Bar-1-55-oz_feb583ea-ea7e-4f5e-9ad2-29194f8b0f5b.8cd556dc6eb45789af890172cbc351df.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF'),
-('Milka', 'Una marca europea de chocolates y productos lácteos, reconocida por su distintivo envoltorio púrpura y su cremoso sabor. Milka ofrece una variedad de chocolates con diferentes rellenos y sabores, siendo su leche de los Alpes un ingrediente estrella que garantiza una experiencia de sabor suave y deliciosa.', 7, 900.00, '9762J', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/566293/Chocolate-Milka-Caramelo-100gr-1-87021.jpg?v=638458984047200000'),
+('Milka', 'Una marca europea de chocolates y productos lácteos, reconocida por su distintivo envoltorio púrpura y su cremoso sabor. Milka ofrece una variedad de chocolates con diferentes rellenos y sabores, siendo su leche de los Alpes un ingrediente estrella que garantiza una experiencia de sabor suave y deliciosa.', 7, 900.00, '9762J', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/566259/Chocolate-Milka-Chips-Ahoy-100gr-1-87023.jpg?v=638458983895970000'),
 ('Ferrero Rocher', 'Una marca italiana famosa por crear algunos de los chocolates más queridos del mundo, como Ferrero Rocher, Kinder Bueno y Nutella. Ferrero se caracteriza por su atención al detalle, calidad premium y sabores irresistibles que hacen que cada bocado sea una experiencia deliciosa y memorable.', 7, 2650.00, 'YTHD7', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/548359/Chocolate-Ferrer-Rocher-T8-100gr-1-24478.jpg?v=638442994503830000');
   
 -- Insertar datos para la categoria Embutidos
@@ -199,6 +202,7 @@ VALUES
 ('Salchichón', 'Un embutido curado elaborado con carne de cerdo y especias, conocido por su sabor intenso y aroma característico. El salchichón se suele consumir en lonchas finas como aperitivo o como parte de una tabla de embutidos, y también se puede usar como ingrediente en sándwiches y ensaladas.', 8, 1940.00, 'SPJEE', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/376778/Salchich-n-Especial-Don-Cristobal-500gr-1-34430.jpg?v=638092317825530000'),
 ('Salchichas', 'Embutidos cilíndricos elaborados con carne picada y especias, conocidos por su sabor sabroso y versatilidad en la cocina. Las salchichas se pueden cocinar de diversas formas, ya sea a la parrilla, fritas, hervidas o asadas, y son un componente común en platos como hot dogs, guisos, pasta y desayunos.', 8, 5200.00, 'LDODH', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/390219/Salchichas-Johnsonville-Queso-Cheddar-396gr-1-58823.jpg?v=638157442371000000'),
 ('Paté', 'Una pasta untuosa y sabrosa elaborada con carne picada, hígado y especias, generalmente servida como aperitivo o entrada. El paté se puede encontrar en una variedad de sabores, como paté de hígado, paté de pollo o paté de vegetales, y se suele disfrutar untado en pan o galletas como parte de una tabla de quesos o embutidos.', 8, 660.00, 'YHDF3', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/554980/Pate-Cinta-Azul-Original-100g-2-32111.jpg?v=638448934061230000');
+
 -- Insertar datos para la categoria Congelados
 INSERT INTO productos (nombreProducto, descripcion, id_categoria, precio, codigo, promocion, activo, ruta_imagen)
 VALUES
@@ -206,6 +210,22 @@ VALUES
 ('Tortas de Carne', 'Sabrosas hamburguesas de carne molida sazonada y formada en forma de disco, cocidas a la parrilla o a la plancha hasta que quedan doradas por fuera y jugosas por dentro. Las tortas de carne son una opción popular en muchas cocinas, ya sea servidas con pan como hamburguesa o acompañadas de vegetales y salsas como plato principal.', 9, 2600.00, 'HYD63', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/283684/Torta-El-Arreo-Congelado-De-Carne-6-Unidades-450gr-2-25695.jpg?v=637798773681870000'),
 ('Pollo Congelado', 'Piezas de pollo fresco que han sido limpiadas, cortadas y congeladas para preservar su frescura y sabor. El pollo congelado es una opción conveniente para tener en el congelador y se puede utilizar en una variedad de recetas, desde platos asados y guisados hasta frituras y sopas.', 9, 4900.00, '09KIS', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/529688/Pollo-Don-Cristobal-Fajita-Pechuga-Congelada-650gr-2-35087.jpg?v=638419990114130000'),
 ('Waffles', 'Deliciosos gofres dorados y esponjosos, cocidos en una plancha caliente hasta que quedan crujientes por fuera y tiernos por dentro. Los waffles son un desayuno clásico que se sirve caliente y se puede disfrutar con una variedad de acompañamientos, como sirope de arce, frutas frescas, crema batida o incluso helado para un toque dulce.', 9, 1600.00, 'L826S', NULL, TRUE, 'https://i5.walmartimages.com.mx/gr/images/product-images/img_large/00750179167036L.jpg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
+
+-- Insertar datos para la categoria Panaderia
+INSERT INTO productos (nombreProducto, descripcion, id_categoria, precio, codigo, promocion, activo, ruta_imagen)
+VALUES
+('Pan Baguette', 'Largo y crujiente, el pan baguette es una deliciosa joya francesa perfecta para hacer bocadillos y acompañar comidas.', 10, 3500.00, '6732G', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/410374/Pan-Castellano-Blanco-400gr-1-85880.jpg?v=638215764681670000'),
+('Pan Cuadrado', 'Delicioso y rectangular, el pan cuadrado es perfecto para hacer sándwiches y tostadas.', 10, 2600.00, 'SKI78', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/371861/Pan-Bimbo-Sandwich-Blaco-Xg-720gr-1-30675.jpg?v=638072446247870000'),
+('Pan Italiano', 'El pan italiano es una obra maestra de la panadería, con su corteza crujiente y su miga suave y esponjosa. ', 10, 4900.00, '09LOS', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/410375/Pan-Italiano-Blanco-150-gr-1-61239.jpg?v=638215764685100000'),
+('Pan Rústico', 'Con su aspecto tosco y su sabor auténtico, el pan rústico nos transporta a la tradición y al encanto de la panadería artesanal', 10, 1600.00, 'LO098', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/263923/Pan-Rustico-Blanco-Bola-Bolsa-4-Un-280Gr-1-39656.jpg?v=637747257720670000');
+
+-- Insertar datos para la categoria Lacteos
+INSERT INTO productos (nombreProducto, descripcion, id_categoria, precio, codigo, promocion, activo, ruta_imagen)
+VALUES
+('Mantequilla', 'Untuosa y cremosa, perfecta para dar sabor a tus platos favoritos.', 11, 500.00, '6732G', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/248324/Mantequilla-Dos-Pinos-Light-210Gr-1-34165.jpg?v=637710432489400000'),
+('Yogurt Griego', 'Rico en proteínas y cremoso en textura, ideal como desayuno o merienda saludable.', 11, 1600.00, 'SKI78', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/385153/Yogurt-Dos-Pinos-Griego-Sabor-Coco-200Ml-1-33697.jpg?v=638140702815130000'),
+('Leche', 'Fuente natural de calcio y nutrientes esenciales, excelente para fortalecer huesos y músculos. ', 11, 2900.00, '09LOS', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/302258/Leche-Sabemas-Uht-Entera-3-5-Grasa-1000Ml-2-28675.jpg?v=637848670559000000'),
+('Leche Pinito', 'https://walmartcr.vtexassets.com/arquivos/ids/406513/Leche-Pinito-En-Polvo-110gr-2-76218.jpg?v=638207238412930000', 11, 1300.00, 'LO098', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/406513/Leche-Pinito-En-Polvo-110gr-2-76218.jpg?v=638207238412930000');
 
 -- SELECT * FROM ticorganiko.cliente;
 -- SELECT * FROM ticorganiko.rol;
