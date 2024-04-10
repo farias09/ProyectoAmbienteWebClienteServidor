@@ -55,9 +55,8 @@ DEFAULT CHARACTER SET = utf8mb4;
 CREATE TABLE pedidos (
   id_pedido INT NOT NULL AUTO_INCREMENT,
   id_cliente INT NOT NULL,
-  id_producto INT NOT NULL,
   PRIMARY KEY (id_pedido),
-  FOREIGN KEY fk_pedido_cliente (id_cliente) REFERENCES cliente(id_cliente);
+  FOREIGN KEY fk_pedido_cliente (id_cliente) REFERENCES cliente(id_cliente)
 ) ENGINE = InnoDB 
 DEFAULT CHARACTER SET = utf8mb4;
 
@@ -74,7 +73,6 @@ CREATE TABLE facturas (
 ) ENGINE = InnoDB 
 DEFAULT CHARACTER SET = utf8mb4;
 
---Crear tabla intermediaria para realizar la compras
 CREATE TABLE pedidos_productos (
   id_pedido_producto INT NOT NULL AUTO_INCREMENT,
   id_pedido INT NOT NULL,
