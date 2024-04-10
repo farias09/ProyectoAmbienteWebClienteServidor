@@ -57,8 +57,7 @@ CREATE TABLE pedidos (
   id_cliente INT NOT NULL,
   id_producto INT NOT NULL,
   PRIMARY KEY (id_pedido),
-  FOREIGN KEY fk_pedido_cliente (id_cliente) REFERENCES cliente(id_cliente),
-  FOREIGN KEY fk_pedido_producto (id_producto) REFERENCES productos(id_producto)
+  FOREIGN KEY fk_pedido_cliente (id_cliente) REFERENCES cliente(id_cliente);
 ) ENGINE = InnoDB 
 DEFAULT CHARACTER SET = utf8mb4;
 
@@ -74,6 +73,18 @@ CREATE TABLE facturas (
   FOREIGN KEY fk_factura_pedido (id_pedido) REFERENCES pedidos(id_pedido)
 ) ENGINE = InnoDB 
 DEFAULT CHARACTER SET = utf8mb4;
+
+--Crear tabla intermediaria para realizar la compras
+CREATE TABLE pedidos_productos (
+  id_pedido_producto INT NOT NULL AUTO_INCREMENT,
+  id_pedido INT NOT NULL,
+  id_producto INT NOT NULL,
+  cantidad INT NOT NULL,
+  precio_unitario DECIMAL(10,2) NOT NULL,
+  PRIMARY KEY (id_pedido_producto),
+  FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
+  FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+) ENGINE =InnoDB DEFAULT CHARACTER SET=utf8mb4;
 
 create table rol (
   id_rol INT NOT NULL AUTO_INCREMENT,
