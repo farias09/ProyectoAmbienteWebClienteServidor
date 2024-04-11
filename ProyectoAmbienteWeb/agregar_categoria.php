@@ -10,8 +10,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Obtiene el nombre de la categoría enviado desde el formulario
         $nombre_categoria = $_POST['nombre_categoria'];
 
+        // Verifica si el campo de ruta de imagen está configurado
+        if (isset($_POST['ruta_imagen']) && !empty($_POST['ruta_imagen'])) {
+            // Obtiene la ruta de la imagen enviada desde el formulario
+            $ruta_imagen = $_POST['ruta_imagen'];
+        } else {
+            // Si no se proporciona una ruta de imagen, se asigna una por defecto
+            $ruta_imagen = "ruta_por_defecto.jpg"; // Cambia "ruta_por_defecto.jpg" por la ruta deseada
+        }
+
         // Prepara la consulta SQL para insertar la nueva categoría en la tabla
-        $query = "INSERT INTO categorias (nombre_categoria) VALUES ('$nombre_categoria')";
+        $query = "INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('$nombre_categoria', '$ruta_imagen')";
 
         // Ejecuta la consulta
         $result = mysqli_query($conn, $query);
@@ -46,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <body>
-<h1>Agregar Nuvea Categoria</h1>
+<h1>Agregar Nueva Categoría</h1>
 <br>
 <form action="agregar_categoria.php" method="post">
     <div class="mb-3">
@@ -54,6 +63,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row">
             <div class="col-8 col-sm-6">
                 <input type="text" class="form-control" id="nombre_categoria" name="nombre_categoria">
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="ruta_imagen" class="form-label">Ruta de la imagen:</label>
+        <div class="row">
+            <div class="col-8 col-sm-6">
+                <input type="text" class="form-control" id="ruta_imagen" name="ruta_imagen">
             </div>
         </div>
     </div>

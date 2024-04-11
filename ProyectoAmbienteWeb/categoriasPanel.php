@@ -43,9 +43,12 @@ session_start();
                                 <div id="tarjetasCatalogo" class="card-body d-flex justify-content-between align-items-center">
                                     <p id="textoCatalogo" class="card-text"><?= $categoria['nombre_categoria'] ?></p>
                                     <div>
-                                        <a href="editar_categoria.php">
-                                            <button id="btnEditarCategoria" type="button" class="btn btn-outline-dark"><i class="fa-regular fa-pen-to-square"></i></button>
-                                        </a>
+                                    <a href="editar_categoria.php?id_categoria=<?php echo $categoria['id_categoria']; ?>">
+    <button id="btnEditarCategoria" type="button" class="btn btn-outline-dark">
+        <i class="fa-regular fa-pen-to-square"></i>
+    </button>
+</a>
+
                                         <form method="post" action="eliminar_categoria.php">
                                             <input type="hidden" name="categoria_id" value="<?= $categoria['id_categoria'] ?>">
                                             <button type="submit" name="eliminar_categoria" class="btn btn-outline-danger">
