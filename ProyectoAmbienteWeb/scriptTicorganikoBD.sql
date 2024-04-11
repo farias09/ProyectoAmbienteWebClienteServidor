@@ -28,9 +28,10 @@ CREATE TABLE cliente (
   ENGINE = InnoDB
   DEFAULT CHARACTER SET = utf8mb4;
   
-  create table categorias (
+   create table categorias (
     id_categoria INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_categoria VARCHAR(100) NOT NULL
+    nombre_categoria VARCHAR(100) NOT NULL,
+    ruta_imagen VARCHAR(1024)
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
@@ -94,19 +95,20 @@ create table rol (
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
+INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Dulces', 'https://www.superaki.mx/cdn/shop/collections/DULCES.png?v=1634682356');
+INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Bebidas', 'img/bebidas.jpg');
+INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Cereales', 'https://cloudfront-us-east-1.images.arcpublishing.com/gruponacion/6EONPOUOJNHWXPLT7OTC7UP2I4.jpg');
+INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Frutas', 'https://www.loreki.com/wp-content/uploads/2014/09/frutas.propiedades.jpg');
+INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Carnes', 'https://i.blogs.es/a6a88d/1366_20001/450_1000.webp');
+INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Verduras', 'https://libroderecetas.com/files/recetas/vegetales-en-cocina.jpg');
+INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Chocolates', 'https://www.thespruceeats.com/thmb/FhHcgQni8lgV0griUeDJMTAszxI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/chocolate_hero1-d62e5444a8734f8d8fe91f5631d51ca5.jpg');
+INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Embutidos', 'https://imgmedia.buenazo.pe/600x338/buenazo/original/2023/01/03/63b46e1847deb8340e430774.jpg');
+INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Congelados', 'https://fuentesmar.es/wp-content/uploads/2020/10/tranquility-Landscape_Pics_HD_Wallpaper_2560x1600.jpg');
+INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Panaderia', 'https://www.ocu.org/-/media/ocu/images/home/alimentacion/alimentos/panes/panes-guia-compra.jpg?rev=9a1e9247-e398-4c0f-b489-d01d95a221ad&hash=E5149953335F3DC2129A9B495E89DF51');
+INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Lacteos', 'https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_image__small/public/articulos/productos-lacteos.jpg');
+INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Licores', 'https://kr.imboldn.com/wp-content/uploads/2023/05/01-768x432.jpg');
+INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Prueba', 'img/bebidas.jpg');
 
-INSERT INTO categorias (nombre_categoria) VALUES ('Dulces');
-INSERT INTO categorias (nombre_categoria) VALUES ('Bebidas');
-INSERT INTO categorias (nombre_categoria) VALUES ('Cereales');
-INSERT INTO categorias (nombre_categoria) VALUES ('Frutas');
-INSERT INTO categorias (nombre_categoria) VALUES ('Carnes');
-INSERT INTO categorias (nombre_categoria) VALUES ('Verduras');
-INSERT INTO categorias (nombre_categoria) VALUES ('Chocolates');
-INSERT INTO categorias (nombre_categoria) VALUES ('Embutidos');
-INSERT INTO categorias (nombre_categoria) VALUES ('Congelados');
-INSERT INTO categorias (nombre_categoria) VALUES ('Panaderia');
-INSERT INTO categorias (nombre_categoria) VALUES ('Lacteos');
-INSERT INTO categorias (nombre_categoria) VALUES ('Licores');
 
 INSERT INTO cliente (id_cliente, nombre, correo, numero_telefono, direccion, cedula, username, password, ruta_imagen, activo) VALUES
 (1, 'Juan Carlos Morales Silva', 'Juan1234@gmail.com', 123456789, ' San Jose - Residencial Los Pinos, Calle 5', 184720483, 'juan12', '$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.', 'https://www.afondochile.cl/site/wp-content/uploads/2018/06/jose-vaisman-e1529942487664.jpg', true),
