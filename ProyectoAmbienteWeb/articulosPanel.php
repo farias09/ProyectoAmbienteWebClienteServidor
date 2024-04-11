@@ -46,7 +46,25 @@ $resultado = mysqli_query($conn, $query);
                     <img src="img/BEBIDAS.png" class="img-fluid" alt="Bebidas header" style="margin-bottom: 30px;">
                     <?php elseif ($categoria_nombre == 'Cereales'): ?>
                     <img src="img/CEREALES.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
-                    <!-- Agregar más casos según sea necesario -->
+                    <?php elseif ($categoria_nombre == 'Frutas'): ?>
+                    <img src="img/FRUTAS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria_nombre == 'Carnes'): ?>
+                    <img src="img/CARNES.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria_nombre == 'Verduras'): ?>
+                    <img src="img/VERDURAS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria_nombre == 'Chocolates'): ?>
+                    <img src="img/CHOCOLATES.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria_nombre == 'Embutidos'): ?>
+                    <img src="img/EMBUTIDOS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria_nombre == 'Congelados'): ?>
+                    <img src="img/CONGELADOS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria_nombre == 'Panaderia'): ?>
+                    <img src="img/PANADERIA.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria_nombre == 'Lacteos'): ?>
+                    <img src="img/LACTEOS.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    <?php elseif ($categoria_nombre == 'Licores'): ?>
+                    <img src="img/LICORES.png" class="img-fluid" alt="Cereales header" style="margin-bottom: 30px;">
+                    
                     <?php endif; ?>
                     <div class="row">
                         <div class="col-md-12">
