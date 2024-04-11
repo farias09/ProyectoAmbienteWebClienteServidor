@@ -79,6 +79,7 @@ CREATE TABLE pedidos_productos (
   id_producto INT NOT NULL,
   cantidad INT NOT NULL,
   precio_unitario DECIMAL(10,2) NOT NULL,
+  fecha_compra DATETIME,
   PRIMARY KEY (id_pedido_producto),
   FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
   FOREIGN KEY (id_producto) REFERENCES productos(id_producto)

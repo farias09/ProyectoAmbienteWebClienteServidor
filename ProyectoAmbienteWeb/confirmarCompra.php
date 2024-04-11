@@ -29,21 +29,23 @@ if ($resultado_obtener_cliente && $resultado_obtener_cliente->num_rows > 0) {
             $cantidad = $detalle_producto['cantidad'];
             $precio_unitario = $detalle_producto['precio'];
 
-         // Insertar el producto del carrito en la tabla Pedidos_Productos
-         $query_insert_producto_pedido = "INSERT INTO pedidos_productos (id_pedido, id_producto, cantidad, precio_unitario) 
-         VALUES ($id_pedido, $id_producto, $cantidad, $precio_unitario)";
-        $resultado_insert_producto_pedido = $conn->query($query_insert_producto_pedido);
+            // Obtener la fecha actual
+            $fecha_actual = date("Y-m-d H:i:s");
 
-        // Verificar si la inserción del producto del carrito fue exitosa
-        if (!$resultado_insert_producto_pedido) {
-            // Manejar el caso en que la inserción falló
-            echo "Error al insertar el producto del carrito en el pedido.";
+            // Insertar el producto del carrito en la tabla Pedidos_Productos con la fecha actual
+            $query_insert_producto_pedido = "INSERT INTO pedidos_productos (id_pedido, id_producto, cantidad, precio_unitario, fecha_compra) 
+                                            VALUES ($id_pedido, $id_producto, $cantidad, $precio_unitario, CURDATE())";
+            $resultado_insert_producto_pedido = $conn->query($query_insert_producto_pedido);
+
+            // Verificar si la inserción del producto del carrito fue exitosa
+            if (!$resultado_insert_producto_pedido) {
+                // Manejar el caso en que la inserción falló
+                echo "Error al insertar el producto del carrito en el pedido.";
+            }
         }
-    }
-     // Redirigir a la página de confirmación
-     header("Location: compraRealizada.php?id_pedido=$id_pedido");
-     exit();
-
+        // Redirigir a la página de confirmación
+        header("Location: compraRealizada.php?id_pedido=$id_pedido");
+        exit();
     } else {
         // Manejar el caso en que la inserción del pedido falló
         echo "Error al insertar el pedido en la base de datos.";
