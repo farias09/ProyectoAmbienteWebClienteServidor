@@ -28,7 +28,7 @@ session_start();
                 </div>
             </div>
             <section class="imagenes-redondeada">
-                    <a href="articulosPanel.php?categoria=cereales">
+                    <a href="articulosPanel.php?categoria=3">
                      <img src="img/CEREALESPROMO.png" alt="Promo cereales"
                     style="width: 1300px; border: 1px solid #d8d8d8; margin-bottom: 50px; border-radius: 10px;">
 
@@ -36,7 +36,7 @@ session_start();
 
             <div class="row">
                 <div class="col-md-4 my-2">
-                    <a href="articulosPanel.php?categoria=verduras">
+                    <a href="articulosPanel.php?categoria=6">
                         <div class="card">
                             <img class="card-img-top" src="img/promoverduras.jpg" alt="catalogo"/>
                             <div class="card-body">
@@ -46,7 +46,7 @@ session_start();
                     </a>
                 </div>
                 <div class="col-md-4 my-2">
-                    <a href="articulosPanel.php?categoria=lacteos">
+                    <a href="articulosPanel.php?categoria=11">
                         <div class="card">
                             <!-- Tarjeta 2 venta flash -->
                             <img class="card-img-top" src="img/leche.jpg" alt="ventaflash" />
@@ -57,7 +57,7 @@ session_start();
                     </a>
                 </div>
                 <div class="col-md-4 my-2">
-                    <a href="articulosPanel.php?categoria=licores">
+                    <a href="articulosPanel.php?categoria=12">
                         <div class="card">
                             <!-- Tarjeta 3 promociones -->
                             <img class="card-img-top" src="img/alcohol.jpg" alt="promociones" />
