@@ -2,6 +2,12 @@
 include "conexion.php";
 include_once "plantilla.php";
 session_start();
+include_once "ProcesosLR.php";
+
+// Verificar si el usuario tiene acceso al panel de reportes como administrador
+if (!verificarAccesoAdmin()) {
+    exit();
+}
 
 // Obtener el ID de la categoría de la URL
 $categoria_id = $_GET['id_categoria'];

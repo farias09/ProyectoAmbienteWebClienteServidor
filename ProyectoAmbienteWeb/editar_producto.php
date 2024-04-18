@@ -2,6 +2,13 @@
 include "conexion.php";
 include_once "plantilla.php";
 include "obtener_categorias.php";
+include_once "ProcesosLR.php";
+
+// Verificar si el usuario tiene acceso al panel de reportes como administrador
+if (!verificarAccesoAdmin()) {
+    exit();
+}
+
 
 // Verificar si se ha proporcionado el parámetro del ID del producto a editar
 if (isset($_GET['id_producto'])) {

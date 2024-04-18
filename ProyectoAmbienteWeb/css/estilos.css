@@ -57,7 +57,7 @@
 #main-header h1 {
     font-size: 27px;
     color: #000;
-    margin-top: 15px; /* Margen superior del ttulo principal */
+    margin-top: 10px; /* Margen superior del ttulo principal */
 }
 
 .card {
@@ -89,12 +89,12 @@
 }
 
 .input-group-narrow {
-    max-width: 440px; /* Establece el ancho máximo a tu preferencia */
-    margin-left: 0px; /* Ajusta el margen izquierdo a tu preferencia */
+    max-width: 440px;
+    margin-left: 0px;
 }
 
 .smaller-profile-img { /*Ajusta la imagen de usuario*/
-    max-width: 135px; /* Ajusta el ancho máximo según tus preferencias */
+    max-width: 135px;
 }
 
 .user-info {
@@ -106,14 +106,14 @@
 .user-info img {
     float: left;
     margin-top: 25px;
-    margin-right: 10px; /* Ajusta el margen a tu preferencia */
+    margin-right: 10px;
     border: 3px solid black;
 }
 
 
 .col-md-6 {
-    max-width: 440px; /* Establece el ancho máximo a tu preferencia */
-    margin-left: 0px; /* Ajusta el margen izquierdo a tu preferencia */
+    max-width: 440px;
+    margin-left: 0px;
 }
 
 #btnEditarGuardar{
@@ -146,6 +146,7 @@
     border-radius: 25px;
     margin-top: 32px;
     max-width: 815px;
+    min-height: 592px;
 }
 
 #loginButtom {
@@ -173,9 +174,17 @@
 }
 
 
-#identificadorLista {
+#listaProductosNULL {
     background-color: #0D6EFD;
     color: white;
+    text-align: center;
+    padding-top: 200px;
+}
+
+#listaProductos {
+    background-color: #0D6EFD;
+    color: white;
+    font-size: 16px;
 }
 
 .scroll-list { /*propiedades del scroll del card-historial*/
@@ -203,17 +212,23 @@
 
 #btnEditarCategoria{
     padding: 6px 10px;
+    margin-right: 10px;
     
 }
 
 #tarjetasCatalogo{
     padding: 10px 20px;
-    
+    text-decoration: none;
 }
 
 #textoCatalogo{
     margin-bottom: -0rem;
     
+}
+
+#footerCardArticulos {
+    background-color: #0d6efd;
+    padding: 5px 89px;
 }
 
 /*#stContenedor{
@@ -245,7 +260,7 @@
 
 
 #resgistro {
-    margin-top: 70px;
+    margin-top: 10px;
 }
 
 #cardLogin{
@@ -357,6 +372,13 @@ tr:hover {
 
 #precioConfig {
     float: right;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#pricePromocion {
+    float: none;
+    display: block;
 }
 
 .quantity-container p {
@@ -439,6 +461,7 @@ tr:hover {
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     overflow: hidden;
+    margin-top: 20px;
 }
 
 #tarjetasArticulos:hover {
@@ -454,6 +477,8 @@ tr:hover {
     margin: 0 auto;
     display: block;
     margin-bottom: 5px;
+    min-height: 230px;
+    max-height: 310px;
 }
 
 #tarjetasArticulosbody {
@@ -463,6 +488,21 @@ tr:hover {
 
 #tarjetasArticulostext {
     font-family: Vegur, 'PT Sans', sans-serif;
+}
+
+#cardImgArticulo {
+    border-radius: 20px; 
+    border: 3px solid #cbcbcb; 
+    padding: 20px;
+    min-height: 545px;
+    max-height: 545px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ImgArticuloInfo {
+    border-radius: 20px;
 }
 
 /*//////////Panel de compra realizada//////////*/
@@ -503,4 +543,3 @@ tr:hover {
     display: flex;
     justify-content: center;
   }
-  

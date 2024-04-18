@@ -28,11 +28,11 @@ session_start();
                 </div>
             </div>
             <section class="imagenes-redondeada">
-                <a href="articulosPanel.php?categoria=bebidas">
+                <a href="infoProducto.php?id_producto=6">
                     <img src="img/COCAPROMO.png" alt="promo de coca"
                         style="width: 600px; border: 1px solid #d8d8d8; margin-right: 90px; margin-bottom: 50px; border-radius: 10px;">
                 </a>
-                <a href="articulosPanel.php?categoria=chocolates">
+                <a href="articulosPanel.php?categoria=7">
                     <img src="img/CHOCOPROMO.png" alt="Imagen 2"
                         style="width: 600px; border: 1px solid #d8d8d8; margin-bottom: 50px; border-radius: 10px;">
                 </a>

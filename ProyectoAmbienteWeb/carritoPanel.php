@@ -39,6 +39,19 @@ session_start();
         font-size: 72px;
         color: #6c757d;
     }
+
+    .empty-cart-box1 {
+        border: 2px solid #ced4da;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f8f9fa;
+        display: inline-block;
+        width: auto;
+        height: auto;
+        margin-left: 400px;
+    margin-right: auto;
+    text-align: center;
+}
     </style>
 </head>
 
@@ -51,7 +64,7 @@ session_start();
             <!-- Banner de Bienvenida -->
             <section id="banner">
                 <div class="container">
-                    <a href="promocionesPanel.php">
+                    <a>
                         <div class="row">
                             <div class="col-md-12">
                                 <img src="img/CARRRITO.png" alt="Banner" class="img-fluid">
@@ -67,51 +80,73 @@ session_start();
                     {
                         // Eliminar el artículo del carrito usando el ID del producto
                         unset($_SESSION['carrito'][$id_producto]);
-
+                    
                         // Si no quedan más productos en el carrito, eliminar la variable de sesión
                         if (empty($_SESSION['carrito'])) {
                             unset($_SESSION['carrito']);
                         }
                     }
-
+                    
                     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['eliminar'])) {
                         $id_producto_eliminar = $_POST['eliminar'];
                         eliminarArticuloCarrito($id_producto_eliminar);
                     }
-
+                    
                     // Obtener todos los IDs de productos en el carrito
                     $ids_productos = isset($_SESSION['carrito']) && is_array($_SESSION['carrito']) ? array_keys($_SESSION['carrito']) : array();
-
+                    
                     // Consultar la base de datos para obtener los detalles de los productos en el carrito
                     if (!empty($ids_productos)) {
-                        $query = "SELECT id_producto, nombreProducto, precio FROM productos WHERE id_producto IN (" . implode(',', $ids_productos) . ")";
+                        $query = "SELECT id_producto, nombreProducto, precio, promocion FROM productos WHERE id_producto IN (" . implode(',', $ids_productos) . ")";
                         $resultado = mysqli_query($conn, $query);
                         // Verificar si se obtuvieron resultados
                         if ($resultado && mysqli_num_rows($resultado) > 0) {
                             $hay_productos = true;
                             echo "<h2>Carrito de Compras</h2>";
                             echo "<table class='table'>";
-                            echo "<thead class='thead-light'><tr><th>Producto</th><th>Precio Unitario</th><th>Cantidad</th><th>Precio Total</th><th></th></tr></thead><tbody>";
-
+                            echo "<thead class='thead-light'><tr><th>Producto</th><th>Precio Unitario</th><th>Cantidad</th><th>Promoción Disponible</th><th>Monto Total</th><th></th></tr></thead><tbody>";
+                    
+                            $precio_total_carrito = 0;
+                    
                             while ($row = mysqli_fetch_assoc($resultado)) {
                                 $id_producto = $row['id_producto'];
                                 $nombre_producto = $row['nombreProducto'];
                                 $precio_unitario = $row['precio'];
                                 $cantidad = $_SESSION['carrito'][$id_producto]['cantidad'];
-                                $precio_total = $precio_unitario * $cantidad;
-
+                                $promocion = $row['promocion'];
+                                
+                                if ($promocion !== null) {
+                                    // Aplicar descuento
+                                    $precio_total = $promocion * $cantidad;
+                                    $promo_disponible = "₡" . number_format($promocion, 2);
+                                } else {
+                                    // Sin descuento
+                                    $precio_total = $precio_unitario * $cantidad;
+                                    $promo_disponible = "No";
+                                }
+                                
+                                // Sumar el precio total del producto al precio total del carrito
+                                $precio_total_carrito += $precio_total;
+                                
                                 echo "<tr>";
                                 echo "<td>{$nombre_producto}</td>";
-                                echo "<td>{$precio_unitario}</td>";
+                                echo "<td>₡" . number_format($precio_unitario, 2) . "</td>";
                                 echo "<td>{$cantidad}</td>";
-                                echo "<td>{$precio_total}</td>";
+                                echo "<td>{$promo_disponible}</td>";
+                                echo "<td>₡" . number_format($precio_total, 2) . "</td>";
                                 echo "<td><form method='post'><input type='hidden' name='eliminar' value='{$id_producto}'><button type='submit' class='btn btn-danger'>Eliminar</button></form></td>";
                                 echo "</tr>";
                             }
-
+                            
+                            
+                    
                             echo "</tbody></table>";
-
-                            // Agregar el botón para completar la compra
+                    
+                            echo "<div class='empty-cart-box1'>";
+                            echo "<h3><b>Precio del Total a Pagar: ₡" . number_format($precio_total_carrito, 2) . "</b></h3>";
+                            echo "</div>";
+                    
+                            //Boton para confirma compra
                             echo "<form method='post' action='confirmarCompra.php'>";
                             echo "<button type='submit' name='completar_compra' class='btn btn-primary' style='margin-bottom: 25px;'>Completar Compra</button>";
                             echo "</form>";
@@ -121,7 +156,7 @@ session_start();
                     } else {
                         $hay_productos = false;
                     }
-
+                    
                     if (!$hay_productos) {
                         echo "<div class='empty-cart-message'>";
                         echo "<div class='empty-cart-box'>";
@@ -131,6 +166,7 @@ session_start();
                         echo "</div>";
                     }
                     ?>
+
                 </div>
             </div>
         </div>
