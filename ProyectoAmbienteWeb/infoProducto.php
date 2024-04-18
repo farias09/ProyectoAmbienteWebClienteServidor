@@ -1,4 +1,3 @@
-<!-- 3. Este php es para mostrar los detalles del producto seleccionado en el catalogo -->
 <?php
 include "conexion.php";
 include_once "plantilla.php";
@@ -21,6 +20,16 @@ if (!$resultado || mysqli_num_rows($resultado) == 0) {
 
 // Se almacenan los detalles del producto
 $detalles_producto = mysqli_fetch_assoc($resultado);
+
+$promocion = isset($detalles_producto['promocion']) ? number_format($detalles_producto['promocion'], 2) : null;
+
+// Si existe una promocion muestra el precio con la nueva oferta de promocion
+if ($promocion !== null) {
+    $precio_original = "<span style='color: #909090'>" . "₡" . number_format($detalles_producto['precio'], 2) . "</span>";
+    $precio_promocion = "<del>$precio_original</del><br>Oferta: ₡$promocion";
+} else {
+    $precio_promocion = number_format($detalles_producto['precio'], 2);
+}
 ?>
 
 <!DOCTYPE html>
@@ -47,9 +56,10 @@ $detalles_producto = mysqli_fetch_assoc($resultado);
             </h3>
             <div class="row">
                 <div class="col-5 float-right" style="margin-left: 50px;">
-                    <div class="card" style="border-radius: 20px; border: 3px solid #cbcbcb;">
-                        <img class="card-img-top" style="border-radius: 20px;"
-                            src="<?php echo $detalles_producto['ruta_imagen']; ?>" alt="" />
+                    <div id="cardImgArticulo" class="card">
+                        <img id="ImgArticuloInfo" class="card-img-top"
+                            src="<?php echo $detalles_producto['ruta_imagen']; ?>" alt=""
+                            style="display: block; margin: 0 auto;" />
                     </div>
                 </div>
 
@@ -59,22 +69,27 @@ $detalles_producto = mysqli_fetch_assoc($resultado);
                         <form id="add-to-cart-form" method="post" action="agregar_al_carrito.php">
                             <h6 style="padding-bottom: 5px;">Código: <?php echo $detalles_producto['codigo']; ?></h6>
                             <p><?php echo $detalles_producto['descripcion']; ?></p>
-                            <input type="hidden" name="id_producto" value="<?php echo $detalles_producto['id_producto']; ?>">
-                            <input type="hidden" name="precio" value="<?php echo $detalles_producto['precio']; ?>">
                             <div class="flex-container">
                                 <div>
-                                    <label id="precioConfig" class="price">₡<?php echo number_format($detalles_producto['precio'], 2); ?></label>
+                                    <label id="pricePromocion" class="price">Precio:
+                                        <?php echo $precio_promocion; ?></label>
                                 </div>
                                 <div>
                                     <label for="cantidad" style="margin-right: 5px;">Cantidad:</label>
+                                    <br>
                                     <input type="number" id="cantidad" name="cantidad" value="1" min="1" required>
                                 </div>
                             </div>
+                            <input type="hidden" name="id_producto" value="<?php echo $id_producto; ?>">
+                            <input type="hidden" name="precio" value="<?php echo $detalles_producto['precio']; ?>">
+                            <input type="hidden" name="promocion" value="<?php echo $promocion; ?>">
                             <div class="button-container">
-                                <button type="submit" class="add-to-cart-button" name="add_to_cart">Agregar al Carrito</button>
+                                <button type="submit" class="add-to-cart-button" name="add_to_cart">Agregar al
+                                    Carrito</button>
                                 <button type="submit" class="buy-button" name="comprar_ahora">Comprar Ahora</button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>

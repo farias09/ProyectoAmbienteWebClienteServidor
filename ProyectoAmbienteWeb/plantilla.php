@@ -1,4 +1,4 @@
-<!-- Este php se utiliza como plantilla para integrar en todos los paneles de Nav y Fotter-->
+<!-- Este php se utiliza como plantilla para integrar en todos los paneles de Nav y Fotter -->
 <?php
 function MostrarNavbar()
 {
@@ -102,7 +102,7 @@ function MostrarNavbar()
                             </a>
                         </li>
                         <li class="nav-item px-2">
-                            <a class="nav-link" href="loginPanel.php">
+                            <a class="nav-link" href="carritoPanel.php">
                                 <i class="fa-solid fa-cart-shopping"></i>Carrito</a>
                         </li>';
                     }

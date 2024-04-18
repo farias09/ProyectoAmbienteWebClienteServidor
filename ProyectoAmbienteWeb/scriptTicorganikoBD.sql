@@ -61,25 +61,13 @@ CREATE TABLE pedidos (
 ) ENGINE = InnoDB 
 DEFAULT CHARACTER SET = utf8mb4;
 
--- Crear la tabla de factura para los clientes (Historial de Compras)
-CREATE TABLE facturas (
-  id_factura INT NOT NULL AUTO_INCREMENT,
-  id_pedido INT NOT NULL,
-  fecha_deCompra DATE NOT NULL,
-  codigoFactura VARCHAR(15) NOT NULL,
-  cantidad INT NOT NULL,
-  precio_total DECIMAL(10, 2) NOT NULL,
-  PRIMARY KEY (id_factura),
-  FOREIGN KEY fk_factura_pedido (id_pedido) REFERENCES pedidos(id_pedido)
-) ENGINE = InnoDB 
-DEFAULT CHARACTER SET = utf8mb4;
-
 CREATE TABLE pedidos_productos (
   id_pedido_producto INT NOT NULL AUTO_INCREMENT,
   id_pedido INT NOT NULL,
   id_producto INT NOT NULL,
-  cantidad INT NOT NULL,
   precio_unitario DECIMAL(10,2) NOT NULL,
+  cantidad INT NOT NULL,
+  monto_total DECIMAL(10,2) NOT NULL,
   fecha_compra DATETIME,
   PRIMARY KEY (id_pedido_producto),
   FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
@@ -95,6 +83,8 @@ create table rol (
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
+
+
 INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Dulces', 'https://www.superaki.mx/cdn/shop/collections/DULCES.png?v=1634682356');
 INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Bebidas', 'img/bebidas.jpg');
 INSERT INTO categorias (nombre_categoria, ruta_imagen) VALUES ('Cereales', 'https://cloudfront-us-east-1.images.arcpublishing.com/gruponacion/6EONPOUOJNHWXPLT7OTC7UP2I4.jpg');
@@ -150,14 +140,17 @@ VALUES
   ('PushPops', 'PushPops es una marca de paletas de caramelo con un envase cilíndrico que se empuja desde abajo para consumir fácilmente.', 1, 450, 'CH74J2', NULL, TRUE, 'https://i5.walmartimages.com/seo/Jumbo-Push-Pop-Assorted-Flavor-Spring-Lollipop-1-06oz_b253883d-fb42-4627-8dd2-e31454ff5e84.8e0d92e5320a5b030106f04b5bbb8d3d.jpeg'),
   ('Snickers', 'Snickers es una barra de chocolate con relleno de mani y caramelo, cubierta con chocolate.', 1, 350, 'GAU39D', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/287993/Chocolate-Snickers-Original-52-7gr-1-27216.jpg?v=637808279270500000'),
   ('Morenitos', 'Morenitos son dulces de chocolate con leche y coco, muy populares en algunas regiones de América Latina.', 1, 150, 'CAY38C', NULL, TRUE, 'https://www.ticoshopping.com/cdn/shop/products/Capturadepantalla2022-11-30ala_s_11.19.50.png?v=1669828812'),
-  ('Barrilete', 'Barrilete son caramelos con sabor a fruta en forma de barril, muy populares en algunas regiones, especialmente en Latinoamérica.', 1, 200, 'PA194H', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/564621/Caramelo-Super-Barrilete-Sabor-Fruta-400gr-1-31710.jpg?v=638458768116630000');
+  ('Barrilete', 'Barrilete son caramelos con sabor a fruta en forma de barril, muy populares en algunas regiones, especialmente en Latinoamérica.', 1, 200, 'PA194H', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/564621/Caramelo-Super-Barrilete-Sabor-Fruta-400gr-1-31710.jpg?v=638458768116630000'),
+  ('Chiky Mix de Galletas', 'Una crujiente galleta de vainilla con deliciosa cobertura con sabor de chocolate, La empresa Pozuelo lanzó una nueva oferta de galletas para el 2024, que incluye nuevas versiones de sus clásicas Chiky y Cremas, así como el retorno de las Toby.', 1, 9450.00, 'PA194H', 6950.00, TRUE, 'img/articuloPromocion1.jpeg');
+
 -- Insertar datos para la categoría Bebidas
 INSERT INTO productos (nombreProducto, descripcion, id_categoria, precio, codigo, promocion, activo, ruta_imagen)
 VALUES 
-  ('CocaCola', 'Coca Cola es una bebida azucarada gaseosa vendida a nivel mundial en tiendas, restaurantes y máquinas expendedoras en más de doscientos países o territorios. Es el principal producto de The Coca-Cola Company, de origen estadounidense.', 2, 2150.40, '6XRSW8', NULL, TRUE, 'https://i5.walmartimages.ca/images/Enlarge/-bo/tle/coca-cola-2-liter-botle.jpg'),
+  ('CocaCola', 'Coca Cola es una bebida azucarada gaseosa vendida a nivel mundial en tiendas, restaurantes y máquinas expendedoras en más de doscientos países o territorios. Es el principal producto de The Coca-Cola Company, de origen estadounidense.', 2, 3050.40, '6XRSW8', 2150.00, TRUE, 'https://i5.walmartimages.ca/images/Enlarge/-bo/tle/coca-cola-2-liter-botle.jpg'),
   ('Fanta Kolita', 'Fanta Kolita es una bebida espumosa con una suave mezcla de frutas exóticas y florales. Su carácter dulce y ligeramente ácido puede recordarte a la granadina.', 2, 693.40, 'AM01JS', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/463807/Gaseosa-Fanta-kolita-regular-600-ml-1-26343.jpg?v=638328299959800000'),
   ('Te Frio', 'La producción industrial de frescos de frutas naturales en Costa Rica se inició en el año 2001, cuando Florida Bebidas transformó el mercado nacional al introducir los frescos de frutas y los tés fríos Tropical.', 2, 3254.00, 'CF3DI4', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/353783/Refresco-Tropical-T-Frio-Lim-n-3000ml-1-55580.jpg?v=638018230229930000'),
   ('Pepsi', 'Pepsi es una famosa bebida carbonatada de cola originaria de Estados Unidos. Nace en Carolina del Norte, en 1898, inventada por Caleb B. Bradham, un químico farmacéutico que quería crear un refresco delicioso que ayudara a la digestión y fuera un estimulante.', 2, 1904.00, 'J29NKE', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/379645/Bebida-Gasificada-Pepsi-Cola-Pet-600ml');
+
 -- Insertar datos para la categoria Cereales
 INSERT INTO productos (nombreProducto, descripcion, id_categoria, precio, codigo, promocion, activo, ruta_imagen)
 VALUES
@@ -193,10 +186,10 @@ VALUES
 -- Insertar datos para la categoria Chocolates
 INSERT INTO productos (nombreProducto, descripcion, id_categoria, precio, codigo, promocion, activo, ruta_imagen)
 VALUES
-('Tutto', 'Una marca reconocida por ofrecer una amplia variedad de productos de confitería y dulces, desde chocolates hasta caramelos y galletas. Tutto se destaca por su calidad excepcional y sabores irresistibles que deleitan a los amantes de los dulces en todo el mundo.', 7, 2400.00, 'LMHS2', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/447452/Chocolate-Tutto-Chocolover-200gr-2-28868.jpg?v=638307346138330000'),
-('Hersheys', 'Una marca icónica de chocolates y dulces, conocida por su delicioso sabor y calidad inigualable. Desde sus clásicas barras de chocolate hasta sus diversos productos como Kisses, Reeses y Kit Kat, Hersheys ofrece una amplia gama de opciones para satisfacer cualquier antojo de dulces.', 7, 890.00, 'L24S6', NULL, TRUE, 'https://i5.walmartimages.com/seo/Hershey-s-Milk-Chocolate-Full-Size-Candy-Bar-1-55-oz_feb583ea-ea7e-4f5e-9ad2-29194f8b0f5b.8cd556dc6eb45789af890172cbc351df.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF'),
-('Milka', 'Una marca europea de chocolates y productos lácteos, reconocida por su distintivo envoltorio púrpura y su cremoso sabor. Milka ofrece una variedad de chocolates con diferentes rellenos y sabores, siendo su leche de los Alpes un ingrediente estrella que garantiza una experiencia de sabor suave y deliciosa.', 7, 900.00, '9762J', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/566259/Chocolate-Milka-Chips-Ahoy-100gr-1-87023.jpg?v=638458983895970000'),
-('Ferrero Rocher', 'Una marca italiana famosa por crear algunos de los chocolates más queridos del mundo, como Ferrero Rocher, Kinder Bueno y Nutella. Ferrero se caracteriza por su atención al detalle, calidad premium y sabores irresistibles que hacen que cada bocado sea una experiencia deliciosa y memorable.', 7, 2650.00, 'YTHD7', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/548359/Chocolate-Ferrer-Rocher-T8-100gr-1-24478.jpg?v=638442994503830000');
+('Tutto', 'Una marca reconocida por ofrecer una amplia variedad de productos de confitería y dulces, desde chocolates hasta caramelos y galletas. Tutto se destaca por su calidad excepcional y sabores irresistibles que deleitan a los amantes de los dulces en todo el mundo.', 7, 1750.00, 'LMHS2', 1100.00, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/447452/Chocolate-Tutto-Chocolover-200gr-2-28868.jpg?v=638307346138330000'),
+('Hersheys', 'Una marca icónica de chocolates y dulces, conocida por su delicioso sabor y calidad inigualable. Desde sus clásicas barras de chocolate hasta sus diversos productos como Kisses, Reeses y Kit Kat, Hersheys ofrece una amplia gama de opciones para satisfacer cualquier antojo de dulces.', 7, 890.00, 'L24S6', 560.00, TRUE, 'https://i5.walmartimages.com/seo/Hershey-s-Milk-Chocolate-Full-Size-Candy-Bar-1-55-oz_feb583ea-ea7e-4f5e-9ad2-29194f8b0f5b.8cd556dc6eb45789af890172cbc351df.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF'),
+('Milka', 'Una marca europea de chocolates y productos lácteos, reconocida por su distintivo envoltorio púrpura y su cremoso sabor. Milka ofrece una variedad de chocolates con diferentes rellenos y sabores, siendo su leche de los Alpes un ingrediente estrella que garantiza una experiencia de sabor suave y deliciosa.', 7, 990.00, '9762J', 790.00, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/566259/Chocolate-Milka-Chips-Ahoy-100gr-1-87023.jpg?v=638458983895970000'),
+('Ferrero Rocher', 'Una marca italiana famosa por crear algunos de los chocolates más queridos del mundo, como Ferrero Rocher, Kinder Bueno y Nutella. Ferrero se caracteriza por su atención al detalle, calidad premium y sabores irresistibles que hacen que cada bocado sea una experiencia deliciosa y memorable.', 7, 2650.00, 'YTHD7', 1950.00, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/548359/Chocolate-Ferrer-Rocher-T8-100gr-1-24478.jpg?v=638442994503830000');
   
 -- Insertar datos para la categoria Embutidos
 INSERT INTO productos (nombreProducto, descripcion, id_categoria, precio, codigo, promocion, activo, ruta_imagen)
@@ -209,7 +202,7 @@ VALUES
 -- Insertar datos para la categoria Congelados
 INSERT INTO productos (nombreProducto, descripcion, id_categoria, precio, codigo, promocion, activo, ruta_imagen)
 VALUES
-('Papas Fritas', 'Deliciosas rodajas de papa cortadas en tiras y fritas hasta que quedan doradas y crujientes. Las papas fritas son un clásico acompañamiento que se disfruta en todo el mundo, conocido por su sabor salado y textura crujiente. Perfectas como snack o como acompañamiento para hamburguesas, sándwiches y otros platos principales.', 9, 3500.00, '24FES', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/342183/Papas-Mccain-Fritas-Super-Wedges-750gr-1-27753.jpg?v=637988856578770000'),
+('Papas Fritas', 'Deliciosas rodajas de papa cortadas en tiras y fritas hasta que quedan doradas y crujientes. Las papas fritas son un clásico acompañamiento que se disfruta en todo el mundo, conocido por su sabor salado y textura crujiente. Perfectas como snack o como acompañamiento para hamburguesas, sándwiches y otros platos principales.', 9, 3500.00, '24FES', NULL, TRUE, 'https://www.supermaxonline.com/images_products/250022.jpg'),
 ('Tortas de Carne', 'Sabrosas hamburguesas de carne molida sazonada y formada en forma de disco, cocidas a la parrilla o a la plancha hasta que quedan doradas por fuera y jugosas por dentro. Las tortas de carne son una opción popular en muchas cocinas, ya sea servidas con pan como hamburguesa o acompañadas de vegetales y salsas como plato principal.', 9, 2600.00, 'HYD63', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/283684/Torta-El-Arreo-Congelado-De-Carne-6-Unidades-450gr-2-25695.jpg?v=637798773681870000'),
 ('Pollo Congelado', 'Piezas de pollo fresco que han sido limpiadas, cortadas y congeladas para preservar su frescura y sabor. El pollo congelado es una opción conveniente para tener en el congelador y se puede utilizar en una variedad de recetas, desde platos asados y guisados hasta frituras y sopas.', 9, 4900.00, '09KIS', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/529688/Pollo-Don-Cristobal-Fajita-Pechuga-Congelada-650gr-2-35087.jpg?v=638419990114130000'),
 ('Waffles', 'Deliciosos gofres dorados y esponjosos, cocidos en una plancha caliente hasta que quedan crujientes por fuera y tiernos por dentro. Los waffles son un desayuno clásico que se sirve caliente y se puede disfrutar con una variedad de acompañamientos, como sirope de arce, frutas frescas, crema batida o incluso helado para un toque dulce.', 9, 1600.00, 'L826S', NULL, TRUE, 'https://i5.walmartimages.com.mx/gr/images/product-images/img_large/00750179167036L.jpg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
@@ -228,9 +221,22 @@ VALUES
 ('Mantequilla', 'Untuosa y cremosa, perfecta para dar sabor a tus platos favoritos.', 11, 500.00, '6732G', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/248324/Mantequilla-Dos-Pinos-Light-210Gr-1-34165.jpg?v=637710432489400000'),
 ('Yogurt Griego', 'Rico en proteínas y cremoso en textura, ideal como desayuno o merienda saludable.', 11, 1600.00, 'SKI78', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/385153/Yogurt-Dos-Pinos-Griego-Sabor-Coco-200Ml-1-33697.jpg?v=638140702815130000'),
 ('Leche', 'Fuente natural de calcio y nutrientes esenciales, excelente para fortalecer huesos y músculos. ', 11, 2900.00, '09LOS', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/302258/Leche-Sabemas-Uht-Entera-3-5-Grasa-1000Ml-2-28675.jpg?v=637848670559000000'),
-('Leche Pinito', 'https://walmartcr.vtexassets.com/arquivos/ids/406513/Leche-Pinito-En-Polvo-110gr-2-76218.jpg?v=638207238412930000', 11, 1300.00, 'LO098', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/406513/Leche-Pinito-En-Polvo-110gr-2-76218.jpg?v=638207238412930000');
+('Leche Pinito', 'Información nutricional: 100% leche en polvo de vaca fuente natural de calcio, importante para la mineralización ósea y otros tejidos corporales. Leche en polvo 100% de vaca Fuente natural de calcio, importante para la mineralización de loss huesos y outros tejidos del cuerpo. Fuente de proteína altamente aprovechable para el organismo.', 11, 1300.00, 'LO098', NULL, TRUE, 'https://walmartcr.vtexassets.com/arquivos/ids/406513/Leche-Pinito-En-Polvo-110gr-2-76218.jpg?v=638207238412930000');
+
+-- Insertar datos para la categoria Lacteos
+INSERT INTO productos (nombreProducto, descripcion, id_categoria, precio, codigo, promocion, activo, ruta_imagen)
+VALUES
+('Guaro Cacique', 'Cacique es una marca de aguardientes hechos a base de caña de azúcar típicos en Costa Rica, propiedad de la estatal Fábrica Nacional de Licores (FANAL). ​ Fue lanzada en 1980 y se compone de tres productos: guaro, ron Colorado y ginebra Extraconcha, que se consideran el pilar tradicional de los licores costarricenses.', 12, 5170.00, 'JS72G', NULL, TRUE, 'https://d1cft8rz0k7w99.cloudfront.net/n/f/a/2/f/fa2f431c698e1c3447e96ab25c5b8b4f5ed18322_Liqueur_118238_02.jpg'),
+('Tequila Rose', 'Disfruta de los momentos de celebración con la suavidad y elegancia de Tequila Rose. Su sabor inigualable consta de una rica crema de fresa con el incomparable bocado del tequila. Su diseño elegante y detalles divertidos la convierten en el “pequeño vestido negro” de los licores de crema.', 12, 14310.00, 'K28SY', NULL, TRUE, 'https://d1cft8rz0k7w99.cloudfront.net/n/c/1/c/0/c1c01b95ca6fa063f9d1e6fe64fc5447ec29790c_Tequila_223168_01.jpg'),
+('Johnnie Walker Blue Label', 'Johnnie Walker Blue Label proviene de la selección manual de Scotch Whiskies excepcionales con una notable complejidad de sabor. Solo una de cada 10 000 barricas cumple con los altos estándares. Sugerimos tomarlo solo, junto con un vaso de agua helada para realzar su carácter intenso.', 12, 15140.00, 'LW8DG', NULL, TRUE, 'https://vinumcr.com/wp-content/uploads/2020/06/1217090-Johnnie-Walker-Blue-Label-Whisky-4.jpg'),
+('Whisky Jack Daniels Black', 'Producto con venta restringida, solo para mayores de 18 años.   Jack Daniels Está Elaborado Con La Mejor Malta De Maíz, Centeno Y Cebada. Su Carácter Distintivo Es El Resultado De La Fermentación Natural, La Destilación Cuidadosa Y El Uso Del Agua Sin Hierro De La Destilería De Cave Spring Que Corre A Una Temperatura Constante De 56 ° F', 12, 28110.00, '88S2H', NULL, TRUE, 'https://internetwines.com/cdn/shop/products/JackDanielsBlackLabelOldNo7_900x.jpg?v=1555348955');
+
+
+
 
 -- SELECT * FROM ticorganiko.cliente;
 -- SELECT * FROM ticorganiko.rol;
 SELECT * FROM ticorganiko.productos;
 SELECT * FROM ticorganiko.categorias;
+-- SELECT * FROM ticorganiko.pedidos_productos;
+-- SELECT * FROM ticorganiko.pedidos;

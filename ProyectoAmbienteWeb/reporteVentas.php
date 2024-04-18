@@ -109,12 +109,12 @@ function obtenerTotalVentas($conn) {
     <p class="text-left mb-2" style="padding-top: 40px; color: #000;"><b>Filtro</b></p>
     <div class="list-group">
         <button type="button" style="border: 1px solid #a9a9a9;"
-            class="list-group-item list-group-item-action active"
+            class="list-group-item list-group-item-action"
             onclick="hrefUsuarios()">Usuarios</button>
         <button type="button" style="border: 1px solid #a9a9a9;"
             class="list-group-item list-group-item-action" onclick="hrefProductos()">Productos</button>
         <button type="button" style="border: 1px solid #a9a9a9;"
-            class="list-group-item list-group-item-action" onclick="hrefVentas()">Ventas</button>
+            class="list-group-item list-group-item-action active" onclick="hrefVentas()">Ventas</button>
     </div>
 </div>
             </div>

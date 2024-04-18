@@ -64,7 +64,7 @@ session_start();
                                 <img id="twitter" src="https://cdn-icons-png.flaticon.com/512/124/124021.png"
                                     class="rounded-circle smaller-profile-img" alt="twitter" height="50" />
                             </div>
-                            <p class="text-center" id="resgistro">
+                            <p class="text-center" style="margin-top: 50px;">
                                 No tienes una cuenta?
                                 <a href="registroPanel.php">Regístrate Aquí</a>
                             </p>

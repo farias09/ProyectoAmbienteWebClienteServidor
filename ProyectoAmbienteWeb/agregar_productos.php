@@ -1,6 +1,12 @@
 <?php
 include "conexion.php";
 session_start();
+include_once "ProcesosLR.php";
+
+// Verificar si el usuario tiene acceso al panel de reportes como administrador
+if (!verificarAccesoAdmin()) {
+    exit();
+}
 
 // Definir un array para almacenar mensajes de error
 $errores = [];
